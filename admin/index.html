@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>כשר פליי | מערכת ניהול</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&display=swap');
+body{font-family:"Noto Sans Hebrew",Arial,sans-serif;margin:0;background:#f4f7fb;color:#152238}
+.setup{width:min(650px,calc(100% - 30px));margin:60px auto;background:#fff;border:1px solid #e4e9f0;border-radius:18px;padding:28px;box-shadow:0 20px 60px rgba(7,26,52,.12)}
+h1{margin:0 0 8px;color:#071a34}.muted{color:#69788b}.box{background:#fff8df;border:1px solid #eedb99;padding:13px;border-radius:11px;margin:16px 0}
+label{display:block;font-weight:800;margin:17px 0 6px}input{width:100%;height:48px;border:1px solid #dce4ee;border-radius:10px;padding:0 12px;font:inherit;box-sizing:border-box;direction:ltr;text-align:left}
+button{margin-top:13px;border:0;border-radius:10px;padding:12px 17px;background:#071a34;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+small{display:block;margin-top:8px;color:#7b8797}.help{font-size:13px;line-height:1.65;color:#556579}
+</style>
+<script>window.CMS_MANUAL_INIT=true;</script>
+<script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
+</head>
+<body>
+<div class="setup" id="setup">
+  <h1>מערכת הניהול של כשר פליי</h1>
+  <p class="muted">בהפעלה הראשונה בלבד, הזן את שם מאגר GitHub שבו האתר שמור.</p>
+  <div class="box">לדוגמה, אם כתובת המאגר היא <b>github.com/moshe/kosher-fly</b>, יש לכתוב: <b>moshe/kosher-fly</b></div>
+  <label for="repo">GitHub repository</label>
+  <input id="repo" placeholder="username/kosher-fly">
+  <button id="start">כניסה למערכת הניהול</button>
+  <small>הערך נשמר בדפדפן הזה. לשינוי מאוחר יותר פתח /admin/?setup=1</small>
+  <p class="help">לפני הכניסה הראשונה יש לבצע את שלבי GitHub + Netlify OAuth שמופיעים בקובץ ההדרכה המצורף.</p>
+</div>
+
+<script>
+const F={s:(label,name,widget='string',extra={})=>({label,name,widget,...extra})};
+const pointFields=[F.s('כותרת','title'),F.s('טקסט','text','text')];
+const destFields=[
+ F.s('שם היעד','name'),F.s('מדינה','country'),F.s('שורת תיאור קצרה','tag'),F.s('תמונה','image','image'),
+ F.s('סקירה קצרה','intro','text'),
+ {label:'אטרקציות',name:'attractions',widget:'list',field:{label:'אטרקציה',name:'item',widget:'string'}},
+ {label:'מידע יהודי',name:'jewish',widget:'list',field:{label:'פריט',name:'item',widget:'string'}},
+ F.s('קישור תיירותי','tourUrl'),F.s('קישור למידע יהודי','jewishUrl')
+];
+const formFieldFields=[
+ {label:'שם פנימי',name:'name',widget:'hidden'},
+ {label:'סוג שדה',name:'type',widget:'hidden'},
+ {label:'רוחב',name:'width',widget:'hidden'},
+ F.s('כותרת השדה','label'),
+ F.s('טקסט עזר / Placeholder','placeholder','string',{required:false}),
+ {label:'שדה חובה?',name:'required',widget:'boolean',default:false},
+ {label:'אפשרויות בחירה',name:'options',widget:'list',required:false,field:{label:'אפשרות',name:'option',widget:'string'}}
+];
+
+const fields=[
+ {label:'מיתוג',name:'branding',widget:'object',fields:[
+   F.s('שם האתר','siteName'),F.s('סלוגן','slogan'),F.s('לוגו','logo','image'),F.s('טקסט חלופי ללוגו','logoAlt')
+ ]},
+ {label:'הגדרות עסקיות',name:'settings',widget:'object',fields:[
+   F.s('מייל לקבלת טפסים','contactEmail'),F.s('זמן מענה בימי עסקים','responseDays','number'),F.s('מחיר שירות ליום','pricePerDay','number'),F.s('סימן מטבע','currency')
+ ]},
+ {label:'פס עליון',name:'notice',widget:'list',field:{label:'טקסט',name:'item',widget:'string'}},
+ {label:'תפריט',name:'navigation',widget:'list',fields:[F.s('טקסט','label'),F.s('קישור / עוגן','href')]},
+ {label:'אזור ראשי',name:'hero',widget:'object',fields:[
+   F.s('תמונת רקע','backgroundImage','image'),F.s('כותרת קטנה','eyebrow'),F.s('כותרת - לפני המילה המודגשת','titleBefore'),F.s('כותרת - מילה מודגשת','titleHighlight'),F.s('כותרת - המשך','titleAfter'),
+   F.s('פסקת הסבר','lead','text'),F.s('משפט מודגש','leadStrong'),F.s('כפתור ראשי','primaryCta'),F.s('כפתור משני','secondaryCta'),
+   {label:'נקודות אמון',name:'proofs',widget:'list',field:{label:'טקסט',name:'item',widget:'string'}},
+   {label:'דוגמת מחיר',name:'example',widget:'object',fields:[
+     F.s('תווית','label'),F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('כותרת מחיר','totalLabel'),F.s('מחיר','total'),F.s('משך','duration'),
+     {label:'פירוט עלויות',name:'lines',widget:'list',fields:[F.s('שם','label'),F.s('סכום','value')]},
+     F.s('הערת הבהרה','disclaimer','text')
+   ]}
+ ]},
+ {label:'איך זה יכול להיות זול',name:'idea',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),
+   {label:'הזמנה רגילה',name:'regular',widget:'object',fields:[F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('תקציב','budget'),F.s('טקסט ליד התקציב','budgetLabel'),{label:'נקודות',name:'points',widget:'list',fields:pointFields}]},
+   {label:'תכנון כשר פליי',name:'smart',widget:'object',fields:[F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('תקציב','budget'),F.s('טקסט ליד התקציב','budgetLabel'),{label:'נקודות',name:'points',widget:'list',fields:pointFields}]}
+ ]},
+ {label:'איך זה עובד',name:'process',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),
+   {label:'שלבים',name:'steps',widget:'list',fields:[F.s('מספר','number'),F.s('כותרת','title'),F.s('טקסט','text','text')]}
+ ]},
+ {label:'מחיר השירות',name:'fee',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','titleTemplate'),F.s('תיאור','description','text'),F.s('תג 1','badge1'),F.s('תג 2','badge2'),F.s('טקסט דוגמה','exampleText','text'),
+   F.s('כותרת מחשבון','calculatorLabel'),F.s('כותרת תוצאה','calculatorResultLabel'),F.s('הבהרה','calculatorDisclaimer','text')
+ ]},
+ {label:'טופס בקשה',name:'form',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('כותרת צד','sidebarTitle'),F.s('פתיח צד','sidebarIntro','text'),
+   {label:'נקודות בצד',name:'sidebarPoints',widget:'list',fields:[F.s('אייקון','icon'),F.s('כותרת','title'),F.s('טקסט','text')]},
+   F.s('הערת אבטחה','securityText','text'),F.s('נושא המייל','subject'),F.s('תגובה אוטומטית','autoResponse','text'),
+   F.s('כפתור הקודם','previousButton'),F.s('כפתור הבא','nextButton'),F.s('כפתור שליחה','submitButton'),F.s('טקסט אישור','agreementText','text'),
+   {label:'שלבי הטופס',name:'sections',widget:'list',allow_add:false,fields:[
+     F.s('כותרת השלב','title'),F.s('תיאור השלב','description','text'),
+     {label:'שדות',name:'fields',widget:'list',allow_add:false,fields:formFieldFields}
+   ]}
+ ]},
+ {label:'יעדים',name:'destinationsSection',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('הערה תחתונה','note','text'),
+   F.s('כותרת אטרקציות','attractionsTitle'),F.s('כותרת יהדות','jewishTitle'),F.s('טקסט קישור תיירות','tourismLinkLabel'),F.s('טקסט קישור יהודי','jewishLinkLabel'),F.s('כפתור בקשה','requestButton'),
+   {label:'רשימת יעדים',name:'destinations',widget:'list',summary:'{{fields.name}} — {{fields.country}}',fields:destFields}
+ ]},
+ {label:'שאלות ותשובות',name:'faq',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),
+   {label:'שאלות',name:'items',widget:'list',fields:[F.s('שאלה','question'),F.s('תשובה','answer','text')]}
+ ]},
+ {label:'תחתית האתר',name:'footer',widget:'object',fields:[
+   F.s('תיאור','description','text'),F.s('זכויות יוצרים','copyright'),F.s('הבהרה','disclaimer','text')
+ ]}
+];
+
+const collections=[{
+  label:'תוכן האתר',
+  name:'site_content',
+  files:[{
+    label:'כל הטקסטים וההגדרות',
+    name:'site',
+    file:'content/site.json',
+    format:'json',
+    fields
+  }]
+}];
+
+function launch(repo){
+  document.getElementById('setup').style.display='none';
+  window.initCMS({
+    config:{
+      load_config_file:false,
+      backend:{name:'github',repo:repo,branch:'main'},
+      media_folder:'images/uploads',
+      public_folder:'/images/uploads',
+      locale:'he',
+      collections
+    }
+  });
+}
+
+const params=new URLSearchParams(location.search);
+if(params.get('setup')==='1'){localStorage.removeItem('kosherFlyRepo');history.replaceState(null,'','/admin/');}
+const saved=localStorage.getItem('kosherFlyRepo');
+if(saved){launch(saved);}
+document.getElementById('start').onclick=()=>{
+  const repo=document.getElementById('repo').value.trim();
+  if(!/^[^/]+\/[^/]+$/.test(repo)){alert('יש לכתוב בפורמט username/repository');return;}
+  localStorage.setItem('kosherFlyRepo',repo);launch(repo);
+};
+</script>
+</body>
+</html>
