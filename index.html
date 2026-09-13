@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071a34">
+<title>כשר פליי | לטוס בזול למהדרין</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;600;700;800;900&family=Secular+One&display=swap');
+:root{--navy:#071a34;--navy2:#0d2d55;--blue:#2367d8;--gold:#d8ad48;--gold2:#f4d986;--cream:#fffaf0;--green:#12815f;--text:#142033;--muted:#647287;--line:#e5ebf3;--white:#fff;--bg:#f6f8fc;--shadow:0 22px 70px rgba(7,26,52,.12);--shadow2:0 10px 32px rgba(7,26,52,.08)}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans Hebrew",Arial,sans-serif;line-height:1.72}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit} button{cursor:pointer}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}
+h1,h2,h3,.btn,.menu a,.kicker,.eyebrow,.proof{font-family:"Secular One","Noto Sans Hebrew",sans-serif;font-weight:400}
+.notice{background:var(--navy);color:#dce8f7;font-size:13px;padding:9px 0}
+.notice .container{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(229,235,243,.9)}
+.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:26px}
+.logo img{display:block;width:260px;max-height:68px;object-fit:contain}
+.menu{display:flex;align-items:center;gap:22px;font-size:14px;color:#34445b}.menu a:hover{color:var(--blue)}
+.nav-btn,.btn{border:0;border-radius:10px;padding:13px 18px;font-weight:400;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.nav-btn,.btn-primary{background:var(--navy);color:#fff}.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#202635}.btn-white{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.toggle{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;width:44px;height:44px;font-size:20px}
+.hero{padding:64px 0 58px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94),rgba(255,255,255,.82) 48%,rgba(255,255,255,.62));pointer-events:none}
+.hero .container{position:relative;z-index:1}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.eyebrow{display:inline-flex;background:#fff3cc;color:#5c4714;border:1px solid #f3df9e;border-radius:999px;padding:8px 13px;font-size:13px}
+h1{font-size:clamp(46px,6.3vw,76px);line-height:.99;letter-spacing:-.05em;margin:16px 0;color:var(--navy)} h1 span{color:var(--blue)}
+.hero-lead{font-size:20px;color:#465871;max-width:700px;margin:0}.hero-lead strong{color:var(--navy)}
+.hero-actions,.hero-proof{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.proof{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;color:#485972}
+.hero-card{background:var(--navy);color:#fff;border-radius:20px;padding:28px;box-shadow:var(--shadow);min-height:445px;position:relative;overflow:hidden}
+.hero-card .label{color:#f5d878;font-weight:800;font-size:13px}.hero-card h2{font-size:35px;line-height:1.08;margin:8px 0}.hero-card p{color:#bed0e4;margin:0 0 20px}
+.cost-total{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:18px;margin-bottom:12px}.cost-total b{font-size:38px}.cost-total span{color:#c9d8e9;font-size:13px}
+.cost-line{display:grid;grid-template-columns:1fr auto;gap:12px;padding:8px 0;color:#d7e2ee;font-size:14px}.cost-line strong{color:#fff}.disclaimer{margin-top:15px;padding:11px;border-radius:10px;background:rgba(255,255,255,.07);font-size:11px;color:#afc2d8}
+section{padding:74px 0}.section-title{max-width:780px;margin-bottom:28px}.kicker{color:var(--blue);font-size:13px;border-bottom:2px solid rgba(216,173,72,.55);display:inline-block;padding-bottom:3px}
+.section-title h2{font-size:clamp(32px,4vw,47px);line-height:1.05;margin:8px 0 10px;color:var(--navy);letter-spacing:-.04em}.section-title p{margin:0;color:var(--muted);font-size:17px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.big-compare,.fee-box,.form-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow2)}
+.big-compare h3{font-size:26px;margin:0 0 8px;color:var(--navy)}.big-compare p{color:var(--muted)}.compare-price{font-size:50px;font-weight:900;color:var(--navy);line-height:1}.compare-price small{font-size:17px;color:var(--muted)}
+.checks{display:grid;gap:11px;margin-top:20px}.check{display:flex;gap:10px}.check i{font-style:normal;width:24px;height:24px;display:grid;place-items:center;background:#e9f7f1;color:var(--green);border-radius:50%;font-weight:900;flex:0 0 auto}.check span{color:var(--muted);font-size:13px}
+.how{background:var(--navy);color:#fff}.how .section-title h2{color:#fff}.how .section-title p{color:#b8c9dc}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:14px;padding:22px}.step .num{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:rgba(216,173,72,.18);color:#f6d575;margin-bottom:15px}.step h3{margin:0 0 7px}.step p{margin:0;color:#b8c9dc;font-size:14px}
+.fee-box{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.fee-copy h2{font-size:34px;margin:0 0 10px;color:var(--navy)}.fee-copy p{color:var(--muted)}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:8px 11px;border-radius:10px;background:#eef5ff;color:#235696;font-size:12px;font-weight:800}.badge.green{background:#e9f7f1;color:#12684f}
+.calculator{background:var(--navy);color:#fff;border-radius:15px;padding:20px}.calculator label{display:block;color:#c4d4e6;font-size:13px;margin-bottom:8px}.calculator input{width:100%;height:48px;border:0;border-radius:9px;padding:0 13px}.result{border-top:1px solid rgba(255,255,255,.13);padding-top:14px;margin-top:14px;display:flex;justify-content:space-between;align-items:end}.result b{font-size:30px;color:#f6d575}
+.form-shell{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px;align-items:start}.form-side{position:sticky;top:105px;background:linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:26px}.form-side h2{font-size:30px;margin:0}.form-side p{color:#bfd0e3}.side-points{display:grid;gap:12px;margin-top:22px}.side-point{display:flex;gap:10px}.ico{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.09);color:#f5d575;flex:0 0 auto}.side-point b{display:block}.side-point span{display:block;color:#b9cbe0;font-size:13px}.security{margin-top:20px;border-top:1px solid rgba(255,255,255,.13);padding-top:16px;font-size:12px;color:#9fb4cc}
+.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:24px}.progress span{height:6px;background:#e9eef5;border-radius:3px}.progress span.active{background:var(--gold)}.form-step{display:none}.form-step.active{display:block}.form-step h3{font-size:25px;margin:0}.form-step .desc{color:var(--muted);margin:0 0 18px}.fields-grid{display:flex;flex-wrap:wrap;gap:12px}.field{width:100%}.field.half{width:calc(50% - 6px)}.field.third{width:calc(33.333% - 8px)}.field label{display:block;font-size:12px;font-weight:800;color:#425269;margin:0 3px 5px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;background:#fbfcfe;padding:11px 12px;outline:none}.field input,.field select{height:49px}.field textarea{min-height:110px}.field input:focus,.field select:focus,.field textarea:focus{border-color:#94b8ef;box-shadow:0 0 0 4px rgba(35,103,216,.08);background:#fff}
+.form-actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px}.agreement{display:flex;gap:9px;margin-top:15px;font-size:12px;color:#58677a}.agreement input{margin-top:5px}
+.destinations-showcase{background:linear-gradient(180deg,#f7f9fc,#edf4fb)}.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.dest-card{min-height:315px;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;background:#0b2341;box-shadow:var(--shadow2);transition:.2s}.dest-card:hover{transform:translateY(-4px)}.dest-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dest-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,39,.02) 25%,rgba(5,20,39,.9) 100%)}.dest-card-content{position:absolute;z-index:2;right:0;left:0;bottom:0;padding:20px;color:#fff}.dest-country{display:inline-block;background:rgba(255,255,255,.16);padding:5px 9px;border-radius:999px;font-size:11px}.dest-card h3{font-size:27px;margin:7px 0 3px}.dest-card p{margin:0;color:#dbe6f2;font-size:13px}.dest-open{display:inline-block;margin-top:10px;color:#f4d276;font-size:12px;font-weight:800}.dest-note{margin-top:16px;color:var(--muted);font-size:12px}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}.faq summary{cursor:pointer;color:var(--navy)}.faq p{color:var(--muted);font-size:14px;margin:9px 0 0}
+.dest-modal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,13,27,.72);backdrop-filter:blur(6px)}.dest-modal.show{display:flex}.dest-modal-card{width:min(900px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;position:relative}.dest-modal-hero{height:280px;position:relative;overflow:hidden}.dest-modal-hero img{width:100%;height:100%;object-fit:cover}.dest-modal-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(4,17,32,.84))}.dest-modal-title{position:absolute;z-index:2;right:25px;bottom:20px;color:#fff}.dest-modal-title small{color:#f3d271}.dest-modal-title h2{font-size:36px;margin:2px 0}.dest-close{position:absolute;z-index:4;left:14px;top:14px;width:40px;height:40px;border:0;border-radius:10px;background:#fff;font-size:23px}.dest-modal-body{padding:25px}.dest-intro{color:#526176}.dest-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.dest-info-box{border:1px solid var(--line);border-radius:12px;padding:16px;background:#fbfcfe}.dest-info-box.jewish{background:#fffaf0;border-color:#eee0b9}.dest-info-box h3{margin:0 0 8px;color:var(--navy)}.dest-info-box li{margin:6px 0;color:#536176}.dest-modal-actions{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.source-links{display:flex;gap:7px;flex-wrap:wrap}.source-links a{font-size:12px;color:#2a5d9f;background:#eef5ff;border-radius:999px;padding:7px 10px}
+footer{background:#061526;color:#b8c7d8;padding:40px 0 24px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:25px}.footer-logo{width:280px;filter:brightness(1.7)}footer h4{color:#fff}.foot-bottom{border-top:1px solid rgba(255,255,255,.09);margin-top:24px;padding-top:16px;font-size:12px;color:#8598ae;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:980px){.menu{display:none;position:absolute;top:80px;right:16px;left:16px;background:#fff;padding:15px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow2);flex-direction:column}.menu.show{display:flex}.toggle{display:block}.nav-btn{display:none}.hero-grid,.compare-grid,.fee-box,.form-shell{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.form-side{position:static}.dest-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.logo img{width:210px}.hero{padding:42px 0}.hero-grid{gap:30px}h1{font-size:45px}.hero-card{min-height:auto}.steps,.dest-grid,.faq,.dest-columns,.footer-grid{grid-template-columns:1fr}.field.half,.field.third{width:100%}.form-actions{flex-direction:column-reverse}.form-actions .btn{width:100%}.dest-modal-hero{height:220px}.dest-modal-body{padding:18px}}
+</style>
+</head>
+<body>
+<div class="notice"><div class="container" id="notice"></div></div>
+<header><div class="container nav"><a class="logo" href="#top"><img id="logo" alt=""></a><nav class="menu" id="menu"></nav><button class="nav-btn" id="navCta"></button><button class="toggle" id="toggle">☰</button></div></header>
+<main id="top">
+<section class="hero" id="hero"><div class="container hero-grid"><div><div class="eyebrow" id="heroEyebrow"></div><h1><span id="heroBefore"></span><span id="heroHighlight"></span><span id="heroAfter"></span></h1><p class="hero-lead"><span id="heroLead"></span> <strong id="heroStrong"></strong></p><div class="hero-actions"><a class="btn btn-gold" id="heroPrimary" href="#request"></a><a class="btn btn-white" id="heroSecondary" href="#idea"></a></div><div class="hero-proof" id="heroProofs"></div></div><div class="hero-card"><div class="label" id="exLabel"></div><h2 id="exTitle"></h2><p id="exDesc"></p><div class="cost-total"><div><span id="exTotalLabel"></span><b id="exTotal"></b></div><span id="exDuration"></span></div><div id="exLines"></div><div class="disclaimer" id="exDisclaimer"></div></div></div></section>
+
+<section id="idea"><div class="container"><div class="section-title"><div class="kicker" id="ideaKicker"></div><h2 id="ideaTitle"></h2><p id="ideaDesc"></p></div><div class="compare-grid"><div class="big-compare"><h3 id="regularTitle"></h3><p id="regularDesc"></p><div class="compare-price"><span id="regularBudget"></span> <small id="regularLabel"></small></div><div class="checks" id="regularPoints"></div></div><div class="big-compare"><h3 id="smartTitle"></h3><p id="smartDesc"></p><div class="compare-price"><span id="smartBudget"></span> <small id="smartLabel"></small></div><div class="checks" id="smartPoints"></div></div></div></div></section>
+
+<section class="how" id="process"><div class="container"><div class="section-title"><div class="kicker" id="processKicker" style="color:#f4d374"></div><h2 id="processTitle"></h2><p id="processDesc"></p></div><div class="steps" id="steps"></div></div></section>
+
+<section id="fee"><div class="container"><div class="fee-box"><div class="fee-copy"><div class="kicker" id="feeKicker"></div><h2 id="feeTitle"></h2><p id="feeDesc"></p><div class="badges"><span class="badge green" id="feeBadge1"></span><span class="badge" id="feeBadge2"></span></div><p class="small" id="feeExample"></p></div><div class="calculator"><label id="calcLabel"></label><input id="feeDays" type="number" min="1" value="3"><div class="result"><span id="calcResultLabel"></span><b id="feeResult"></b></div><div class="small" id="calcDisclaimer" style="color:#9fb5cc;margin-top:9px"></div></div></div></div></section>
+
+<section id="request"><div class="container"><div class="section-title"><div class="kicker" id="formKicker"></div><h2 id="formTitle"></h2><p id="formDesc"></p></div><div class="form-shell"><aside class="form-side"><h2 id="sideTitle"></h2><p id="sideIntro"></p><div class="side-points" id="sidePoints"></div><div class="security" id="security"></div></aside><div class="form-card"><div class="progress" id="progress"></div><form id="tripForm" method="POST" target="_blank"><input type="hidden" name="_subject" id="formSubject"><input type="hidden" name="_template" value="table"><input type="hidden" name="_autoresponse" id="autoResponse"><div id="formSteps"></div><label class="agreement" id="agreementWrap"><input type="checkbox" required><span id="agreementText"></span></label><div class="form-actions"><button type="button" class="btn btn-white" id="prevBtn"></button><button type="button" class="btn btn-primary" id="nextBtn"></button><button type="submit" class="btn btn-gold" id="submitBtn"></button></div></form></div></div></div></section>
+
+<section class="destinations-showcase" id="destinations-guide"><div class="container"><div class="section-title"><div class="kicker" id="destKicker"></div><h2 id="destTitle"></h2><p id="destDesc"></p></div><div class="dest-grid" id="destGrid"></div><div class="dest-note" id="destNote"></div></div></section>
+
+<section id="faq"><div class="container"><div class="section-title"><div class="kicker" id="faqKicker"></div><h2 id="faqTitle"></h2></div><div class="faq" id="faqItems"></div></div></section>
+</main>
+
+<div class="dest-modal" id="destModal"><div class="dest-modal-card"><button class="dest-close" id="destClose">×</button><div class="dest-modal-hero"><img id="dmImage"><div class="dest-modal-title"><small id="dmCountry"></small><h2 id="dmName"></h2></div></div><div class="dest-modal-body"><p class="dest-intro" id="dmIntro"></p><div class="dest-columns"><div class="dest-info-box"><h3 id="dmAttractionsTitle"></h3><ul id="dmAttractions"></ul></div><div class="dest-info-box jewish"><h3 id="dmJewishTitle"></h3><ul id="dmJewish"></ul></div></div><div class="dest-modal-actions"><div class="source-links"><a target="_blank" id="dmTour"></a><a target="_blank" id="dmJew"></a></div><button class="btn btn-gold" id="dmRequest"></button></div></div></div></div>
+
+<footer><div class="container"><div class="footer-grid"><div><img class="footer-logo" id="footerLogo"><p id="footerDesc"></p></div><div><h4 id="footerNavTitle">ניווט</h4><div id="footerNav"></div></div></div><div class="foot-bottom"><span id="copyright"></span><span id="footerDisclaimer"></span></div></div></footer>
+
+<script>
+let SITE = null;
+let currentStep = 0;
+
+const $ = id => document.getElementById(id);
+const txt = (id, value) => { const el=$(id); if(el) el.textContent=value ?? ""; };
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const money = n => new Intl.NumberFormat('he-IL',{style:'currency',currency:'ILS',maximumFractionDigits:0}).format(Number(n)||0);
+
+async function loadSite(){
+  try{
+    const r=await fetch('content/site.json?ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('content load');
+    SITE=await r.json();
+    render();
+  }catch(e){
+    document.body.innerHTML='<div style="padding:40px;font-family:Arial">לא ניתן לטעון את תוכן האתר. ודאו שהאתר פורסם דרך Netlify ושקובץ content/site.json קיים.</div>';
+  }
+}
+
+function render(){
+  document.title=SITE.branding.siteName+' | '+SITE.branding.slogan;
+  $('logo').src=SITE.branding.logo; $('logo').alt=SITE.branding.logoAlt;
+  $('footerLogo').src=SITE.branding.logo; $('footerLogo').alt=SITE.branding.logoAlt;
+  $('notice').innerHTML=SITE.notice.map(x=>`<span>${esc(x)}</span>`).join('');
+  $('menu').innerHTML=SITE.navigation.map(x=>`<a href="${esc(x.href)}">${esc(x.label)}</a>`).join('');
+  $('footerNav').innerHTML=SITE.navigation.slice(0,5).map(x=>`<div><a href="${esc(x.href)}">${esc(x.label)}</a></div>`).join('');
+  txt('navCta', SITE.navigation.find(x=>x.href==='#request')?.label || 'בנו לי נופש');
+  $('navCta').onclick=()=>$('request').scrollIntoView({behavior:'smooth'});
+
+  $('hero').style.backgroundImage=`url("${SITE.hero.backgroundImage}")`;
+  txt('heroEyebrow',SITE.hero.eyebrow); txt('heroBefore',SITE.hero.titleBefore); txt('heroHighlight',SITE.hero.titleHighlight); txt('heroAfter',SITE.hero.titleAfter);
+  txt('heroLead',SITE.hero.lead); txt('heroStrong',SITE.hero.leadStrong); txt('heroPrimary',SITE.hero.primaryCta); txt('heroSecondary',SITE.hero.secondaryCta);
+  $('heroProofs').innerHTML=SITE.hero.proofs.map(x=>`<span class="proof">${esc(x)}</span>`).join('');
+  const ex=SITE.hero.example; txt('exLabel',ex.label);txt('exTitle',ex.title);txt('exDesc',ex.description);txt('exTotalLabel',ex.totalLabel);txt('exTotal',ex.total);txt('exDuration',ex.duration);txt('exDisclaimer',ex.disclaimer);
+  $('exLines').innerHTML=ex.lines.map(x=>`<div class="cost-line"><span>${esc(x.label)}</span><strong>${esc(x.value)}</strong></div>`).join('');
+
+  txt('ideaKicker',SITE.idea.kicker);txt('ideaTitle',SITE.idea.title);txt('ideaDesc',SITE.idea.description);
+  renderCompare('regular',SITE.idea.regular); renderCompare('smart',SITE.idea.smart);
+
+  txt('processKicker',SITE.process.kicker);txt('processTitle',SITE.process.title);txt('processDesc',SITE.process.description);
+  $('steps').innerHTML=SITE.process.steps.map(s=>`<div class="step"><div class="num">${esc(s.number)}</div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>`).join('');
+
+  const p=SITE.settings.pricePerDay;
+  txt('feeKicker',SITE.fee.kicker);txt('feeTitle',SITE.fee.titleTemplate.replace('{price}',p));txt('feeDesc',SITE.fee.description);txt('feeBadge1',SITE.fee.badge1);txt('feeBadge2',SITE.fee.badge2);
+  txt('feeExample',SITE.fee.exampleText.replace('{threeDays}',p*3).replace('{fourDays}',p*4));txt('calcLabel',SITE.fee.calculatorLabel);txt('calcResultLabel',SITE.fee.calculatorResultLabel);txt('calcDisclaimer',SITE.fee.calculatorDisclaimer);
+  updateFee();
+
+  txt('formKicker',SITE.form.kicker);txt('formTitle',SITE.form.title);txt('formDesc',SITE.form.description);txt('sideTitle',SITE.form.sidebarTitle);txt('sideIntro',SITE.form.sidebarIntro);txt('security',SITE.form.securityText);
+  $('sidePoints').innerHTML=SITE.form.sidebarPoints.map(x=>`<div class="side-point"><div class="ico">${esc(x.icon)}</div><div><b>${esc(x.title)}</b><span>${esc(x.text)}</span></div></div>`).join('');
+  txt('prevBtn',SITE.form.previousButton);txt('nextBtn',SITE.form.nextButton);txt('submitBtn',SITE.form.submitButton);txt('agreementText',SITE.form.agreementText);
+  $('formSubject').value=SITE.form.subject;$('autoResponse').value=SITE.form.autoResponse;
+  $('tripForm').action='https://formsubmit.co/'+SITE.settings.contactEmail;
+  renderForm();
+
+  txt('destKicker',SITE.destinationsSection.kicker);txt('destTitle',SITE.destinationsSection.title);txt('destDesc',SITE.destinationsSection.description);txt('destNote',SITE.destinationsSection.note);
+  $('destGrid').innerHTML=SITE.destinationsSection.destinations.map((d,i)=>`<article class="dest-card" data-i="${i}"><img src="${esc(d.image)}" alt="${esc(d.name)}" loading="lazy"><div class="dest-card-content"><span class="dest-country">${esc(d.country)}</span><h3>${esc(d.name)}</h3><p>${esc(d.tag)}</p><span class="dest-open">לסקירה קצרה ←</span></div></article>`).join('');
+  document.querySelectorAll('.dest-card').forEach(c=>c.onclick=()=>openDestination(Number(c.dataset.i)));
+
+  txt('faqKicker',SITE.faq.kicker);txt('faqTitle',SITE.faq.title);
+  $('faqItems').innerHTML=SITE.faq.items.map(x=>`<details><summary>${esc(x.question)}</summary><p>${esc(x.answer)}</p></details>`).join('');
+
+  txt('footerDesc',SITE.footer.description);txt('copyright',SITE.footer.copyright.replace('{year}',new Date().getFullYear()));txt('footerDisclaimer',SITE.footer.disclaimer);
+
+  document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>$('menu').classList.remove('show')));
+}
+
+function renderCompare(prefix,d){
+  txt(prefix+'Title',d.title);txt(prefix+'Desc',d.description);txt(prefix+'Budget',d.budget);txt(prefix+'Label',d.budgetLabel);
+  $(prefix+'Points').innerHTML=d.points.map(x=>`<div class="check"><i>✓</i><div><b>${esc(x.title)}</b><br><span>${esc(x.text)}</span></div></div>`).join('');
+}
+
+function updateFee(){ txt('feeResult',money(($('feeDays').value||1)*SITE.settings.pricePerDay)); }
+
+function fieldHTML(f){
+  const req=f.required?' required':'';
+  const star=f.required?' <span style="color:#b64040">*</span>':'';
+  let input='';
+  if(f.type==='textarea') input=`<textarea name="${esc(f.name)}" placeholder="${esc(f.placeholder)}"${req}></textarea>`;
+  else if(f.type==='select') input=`<select name="${esc(f.name)}"${req}>${(f.options||[]).map(o=>`<option>${esc(o)}</option>`).join('')}</select>`;
+  else input=`<input type="${esc(f.type||'text')}" name="${esc(f.name)}" placeholder="${esc(f.placeholder)}"${req}>`;
+  return `<div class="field ${esc(f.width||'full')}"><label>${esc(f.label)}${star}</label>${input}</div>`;
+}
+
+function renderForm(){
+  currentStep=0;
+  $('formSteps').innerHTML=SITE.form.sections.map((s,i)=>`<div class="form-step ${i===0?'active':''}" data-step="${i}"><h3>${esc(s.title)}</h3><p class="desc">${esc(s.description)}</p><div class="fields-grid">${s.fields.map(fieldHTML).join('')}</div></div>`).join('');
+  $('progress').innerHTML=SITE.form.sections.map((_,i)=>`<span class="${i===0?'active':''}"></span>`).join('');
+  updateStepButtons();
+}
+
+function validateCurrent(){
+  const step=document.querySelector(`.form-step[data-step="${currentStep}"]`);
+  for(const el of step.querySelectorAll('[required]')){ if(!el.checkValidity()){el.reportValidity();return false;} }
+  return true;
+}
+function showStep(){
+  document.querySelectorAll('.form-step').forEach((s,i)=>s.classList.toggle('active',i===currentStep));
+  document.querySelectorAll('#progress span').forEach((s,i)=>s.classList.toggle('active',i<=currentStep));
+  updateStepButtons();
+}
+function updateStepButtons(){
+  const last=SITE.form.sections.length-1;
+  $('prevBtn').style.visibility=currentStep===0?'hidden':'visible';
+  $('nextBtn').style.display=currentStep===last?'none':'inline-flex';
+  $('submitBtn').style.display=currentStep===last?'inline-flex':'none';
+  $('agreementWrap').style.display=currentStep===last?'flex':'none';
+}
+
+function openDestination(i){
+  const d=SITE.destinationsSection.destinations[i]; if(!d)return;
+  $('dmImage').src=d.image;txt('dmCountry',d.country);txt('dmName',d.name);txt('dmIntro',d.intro);txt('dmAttractionsTitle',SITE.destinationsSection.attractionsTitle);txt('dmJewishTitle',SITE.destinationsSection.jewishTitle);
+  $('dmAttractions').innerHTML=d.attractions.map(x=>`<li>${esc(x)}</li>`).join('');$('dmJewish').innerHTML=d.jewish.map(x=>`<li>${esc(x)}</li>`).join('');
+  $('dmTour').href=d.tourUrl;txt('dmTour',SITE.destinationsSection.tourismLinkLabel);$('dmJew').href=d.jewishUrl;txt('dmJew',SITE.destinationsSection.jewishLinkLabel);txt('dmRequest',SITE.destinationsSection.requestButton);
+  $('dmRequest').onclick=()=>{closeDest(); const f=document.querySelector('[name="יעדים מועדפים"]'); if(f)f.value=d.name+' / '+d.country; $('request').scrollIntoView({behavior:'smooth'});};
+  $('destModal').classList.add('show');document.body.style.overflow='hidden';
+}
+function closeDest(){$('destModal').classList.remove('show');document.body.style.overflow='';}
+
+$('toggle').onclick=()=>$('menu').classList.toggle('show');
+$('feeDays').oninput=updateFee;
+$('prevBtn').onclick=()=>{currentStep--;showStep();};
+$('nextBtn').onclick=()=>{if(!validateCurrent())return;currentStep++;showStep();};
+$('destClose').onclick=closeDest;
+$('destModal').onclick=e=>{if(e.target===$('destModal'))closeDest();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDest();});
+loadSite();
+</script>
+</body>
+</html>
