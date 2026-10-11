@@ -86,6 +86,17 @@ const fields=[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','titleTemplate'),F.s('תיאור','description','text'),F.s('תג 1','badge1'),F.s('תג 2','badge2'),F.s('טקסט דוגמה','exampleText','text'),
    F.s('כותרת מחשבון','calculatorLabel'),F.s('כותרת תוצאה','calculatorResultLabel'),F.s('הבהרה','calculatorDisclaimer','text')
  ]},
+ {label:'מסלולי שירות ומחירים',name:'pricing',widget:'object',fields:[
+   F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('הערה','note','text'),
+   {label:'מסלול קישורים מלא',name:'fullPlan',widget:'object',fields:[
+     F.s('שם','name'),F.s('תג','badge'),F.s('תיאור','description','text'),F.s('מחיר השקה','launchPrice','number'),F.s('מחיר רגיל','regularPrice','number'),F.s('יחידת מחיר','unit'),
+     {label:'מה כלול',name:'features',widget:'list',field:{label:'פריט',name:'item',widget:'string'}},F.s('טקסט כפתור','cta')
+   ]},
+   {label:'מסלול לפי ימים',name:'dailyPlan',widget:'object',fields:[
+     F.s('שם','name'),F.s('תג','badge'),F.s('תיאור','description','text'),F.s('מחיר השקה ליום','launchPrice','number'),F.s('מחיר רגיל ליום','regularPrice','number'),F.s('יחידת מחיר','unit'),F.s('מספר ימים התחלתי','defaultDays','number'),
+     {label:'מה כלול',name:'features',widget:'list',field:{label:'פריט',name:'item',widget:'string'}},F.s('טקסט כפתור','cta')
+   ]}
+ ]},
  {label:'טופס בקשה',name:'form',widget:'object',fields:[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('כותרת צד','sidebarTitle'),F.s('פתיח צד','sidebarIntro','text'),
    {label:'נקודות בצד',name:'sidebarPoints',widget:'list',fields:[F.s('אייקון','icon'),F.s('כותרת','title'),F.s('טקסט','text')]},
