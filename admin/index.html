@@ -13,6 +13,10 @@ h1{margin:0 0 8px;color:#071a34}.muted{color:#69788b}.box{background:#fff8df;bor
 label{display:block;font-weight:800;margin:17px 0 6px}input{width:100%;height:48px;border:1px solid #dce4ee;border-radius:10px;padding:0 12px;font:inherit;box-sizing:border-box;direction:ltr;text-align:left}
 button{margin-top:13px;border:0;border-radius:10px;padding:12px 17px;background:#071a34;color:#fff;font:inherit;font-weight:800;cursor:pointer}
 small{display:block;margin-top:8px;color:#7b8797}.help{font-size:13px;line-height:1.65;color:#556579}
+
+/* KF_VISUAL_EDITOR_LINK */
+.visual-link{position:fixed;left:18px;bottom:18px;z-index:99999;background:#071a34;color:#fff;text-decoration:none;border-radius:12px;padding:11px 15px;font-weight:800;box-shadow:0 10px 30px rgba(7,26,52,.22)}
+.visual-link:hover{background:#0d2d55}
 </style>
 <script>window.CMS_MANUAL_INIT=true;</script>
 <script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
@@ -29,6 +33,7 @@ small{display:block;margin-top:8px;color:#7b8797}.help{font-size:13px;line-heigh
   <p class="help">לפני הכניסה הראשונה יש לבצע את שלבי GitHub + Netlify OAuth שמופיעים בקובץ ההדרכה המצורף.</p>
 </div>
 
+<a class="visual-link" href="/admin/visual.html">✦ עריכה ויזואלית של האתר</a>
 <script>
 const F={s:(label,name,widget='string',extra={})=>({label,name,widget,...extra})};
 const pointFields=[F.s('כותרת','title'),F.s('טקסט','text','text')];
@@ -51,7 +56,7 @@ const formFieldFields=[
 
 const fields=[
  {label:'מיתוג',name:'branding',widget:'object',fields:[
-   F.s('שם האתר','siteName'),F.s('סלוגן','slogan'),F.s('לוגו','logo','image'),F.s('טקסט חלופי ללוגו','logoAlt')
+   F.s('שם האתר','siteName'),F.s('סלוגן','slogan'),F.s('לוגו','logo','image'),F.s('טקסט חלופי ללוגו','logoAlt'),F.s('גובה לוגו','logoHeight','number',{required:false,value_type:'int',min:45,max:160,step:5})
  ]},
  {label:'הגדרות עסקיות',name:'settings',widget:'object',fields:[
    F.s('מייל לקבלת טפסים','contactEmail'),F.s('זמן מענה בימי עסקים','responseDays','number'),F.s('מחיר שירות ליום','pricePerDay','number'),F.s('סימן מטבע','currency')
@@ -99,7 +104,18 @@ const fields=[
  {label:'שאלות ותשובות',name:'faq',widget:'object',fields:[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),
    {label:'שאלות',name:'items',widget:'list',fields:[F.s('שאלה','question'),F.s('תשובה','answer','text')]}
+ ]},,
+ {label:'עיצוב כללי',name:'design',widget:'object',required:false,collapsed:true,fields:[
+   F.s('צבע ראשי','primaryColor','color',{required:false}),F.s('צבע הדגשה','accentColor','color',{required:false}),F.s('עיגול פינות','cardRadius','number',{required:false}),F.s('רוחב תוכן','contentWidth','number',{required:false})
  ]},
+ {label:'מבנה ויזואלי',name:'visualSettings',widget:'object',required:false,collapsed:true,fields:[
+   {label:'סדר אזורים',name:'layoutOrder',widget:'list',required:false,field:F.s('אזור','item')},
+   {label:'אזורים מוסתרים',name:'hiddenSectionKeys',widget:'list',required:false,field:F.s('אזור','item')}
+ ]},
+ {label:'אזורים וריבועים חופשיים',name:'customSections',widget:'list',required:false,collapsed:true,fields:[
+   F.s('עוגן','anchor'),{label:'מוצג?',name:'enabled',widget:'boolean',default:true},F.s('כותרת קטנה','kicker',{required:false}),F.s('כותרת','title'),F.s('תיאור','description','text',{required:false}),F.s('מספר עמודות','columns','number',{required:false}),F.s('סגנון','style','select',{options:['light','soft','dark'],required:false}),F.s('צבע רקע','backgroundColor','color',{required:false}),F.s('צבע טקסט','textColor','color',{required:false}),
+   {label:'ריבועים',name:'cards',widget:'list',required:false,fields:[F.s('אייקון','icon',{required:false}),F.s('תמונה','image','image',{required:false}),F.s('כותרת','title'),F.s('טקסט','text','text',{required:false}),F.s('כפתור','buttonLabel',{required:false}),F.s('קישור','buttonHref',{required:false}),F.s('צבע רקע','backgroundColor','color',{required:false}),F.s('צבע טקסט','textColor','color',{required:false})]}
+ ]}
  {label:'תחתית האתר',name:'footer',widget:'object',fields:[
    F.s('תיאור','description','text'),F.s('זכויות יוצרים','copyright'),F.s('הבהרה','disclaimer','text')
  ]}
