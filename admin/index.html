@@ -104,18 +104,18 @@ const fields=[
  {label:'שאלות ותשובות',name:'faq',widget:'object',fields:[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),
    {label:'שאלות',name:'items',widget:'list',fields:[F.s('שאלה','question'),F.s('תשובה','answer','text')]}
- ]},,
+ ]},
  {label:'עיצוב כללי',name:'design',widget:'object',required:false,collapsed:true,fields:[
-   F.s('צבע ראשי','primaryColor','color',{required:false}),F.s('צבע הדגשה','accentColor','color',{required:false}),F.s('עיגול פינות','cardRadius','number',{required:false}),F.s('רוחב תוכן','contentWidth','number',{required:false})
+   F.s('צבע ראשי','primaryColor','string',{required:false}),F.s('צבע הדגשה','accentColor','string',{required:false}),F.s('עיגול פינות','cardRadius','number',{required:false}),F.s('רוחב תוכן','contentWidth','number',{required:false})
  ]},
  {label:'מבנה ויזואלי',name:'visualSettings',widget:'object',required:false,collapsed:true,fields:[
    {label:'סדר אזורים',name:'layoutOrder',widget:'list',required:false,field:F.s('אזור','item')},
    {label:'אזורים מוסתרים',name:'hiddenSectionKeys',widget:'list',required:false,field:F.s('אזור','item')}
  ]},
  {label:'אזורים וריבועים חופשיים',name:'customSections',widget:'list',required:false,collapsed:true,fields:[
-   F.s('עוגן','anchor'),{label:'מוצג?',name:'enabled',widget:'boolean',default:true},F.s('כותרת קטנה','kicker',{required:false}),F.s('כותרת','title'),F.s('תיאור','description','text',{required:false}),F.s('מספר עמודות','columns','number',{required:false}),F.s('סגנון','style','select',{options:['light','soft','dark'],required:false}),F.s('צבע רקע','backgroundColor','color',{required:false}),F.s('צבע טקסט','textColor','color',{required:false}),
-   {label:'ריבועים',name:'cards',widget:'list',required:false,fields:[F.s('אייקון','icon',{required:false}),F.s('תמונה','image','image',{required:false}),F.s('כותרת','title'),F.s('טקסט','text','text',{required:false}),F.s('כפתור','buttonLabel',{required:false}),F.s('קישור','buttonHref',{required:false}),F.s('צבע רקע','backgroundColor','color',{required:false}),F.s('צבע טקסט','textColor','color',{required:false})]}
- ]}
+   F.s('עוגן','anchor'),{label:'מוצג?',name:'enabled',widget:'boolean',default:true},F.s('כותרת קטנה','kicker','string',{required:false}),F.s('כותרת','title'),F.s('תיאור','description','text',{required:false}),F.s('מספר עמודות','columns','number',{required:false}),F.s('סגנון','style','select',{options:['light','soft','dark'],required:false}),F.s('צבע רקע','backgroundColor','string',{required:false}),F.s('צבע טקסט','textColor','string',{required:false}),
+   {label:'ריבועים',name:'cards',widget:'list',required:false,fields:[F.s('אייקון','icon','string',{required:false}),F.s('תמונה','image','image',{required:false}),F.s('כותרת','title'),F.s('טקסט','text','text',{required:false}),F.s('כפתור','buttonLabel','string',{required:false}),F.s('קישור','buttonHref','string',{required:false}),F.s('צבע רקע','backgroundColor','string',{required:false}),F.s('צבע טקסט','textColor','string',{required:false})]}
+ ]},
  {label:'תחתית האתר',name:'footer',widget:'object',fields:[
    F.s('תיאור','description','text'),F.s('זכויות יוצרים','copyright'),F.s('הבהרה','disclaimer','text')
  ]}
@@ -135,7 +135,7 @@ const collections=[{
 
 function launch(repo){
   document.getElementById('setup').style.display='none';
-  window.initCMS({
+  window.CMS.init({
     config:{
       load_config_file:false,
       backend:{name:'github',repo:repo,branch:'main'},
