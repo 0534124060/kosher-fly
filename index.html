@@ -17,7 +17,7 @@ h1,h2,h3,.btn,.menu a,.kicker,.eyebrow,.proof{font-family:"Secular One","Noto Sa
 .notice .container{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
 header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(229,235,243,.9)}
 .nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:26px}
-.logo img{display:block;width:260px;max-height:68px;object-fit:contain}
+.logo img{display:block;width:auto;height:var(--kf-logo-height,68px);max-width:360px;object-fit:contain}
 .menu{display:flex;align-items:center;gap:22px;font-size:14px;color:#34445b}.menu a:hover{color:var(--blue)}
 .nav-btn,.btn{border:0;border-radius:10px;padding:13px 18px;font-weight:400;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .nav-btn,.btn-primary{background:var(--navy);color:#fff}.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#202635}.btn-white{background:#fff;color:var(--navy);border:1px solid var(--line)}
@@ -50,6 +50,29 @@ section{padding:74px 0}.section-title{max-width:780px;margin-bottom:28px}.kicker
 footer{background:#061526;color:#b8c7d8;padding:40px 0 24px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:25px}.footer-logo{width:280px;filter:brightness(1.7)}footer h4{color:#fff}.foot-bottom{border-top:1px solid rgba(255,255,255,.09);margin-top:24px;padding-top:16px;font-size:12px;color:#8598ae;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(max-width:980px){.menu{display:none;position:absolute;top:80px;right:16px;left:16px;background:#fff;padding:15px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow2);flex-direction:column}.menu.show{display:flex}.toggle{display:block}.nav-btn{display:none}.hero-grid,.compare-grid,.fee-box,.form-shell{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.form-side{position:static}.dest-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){.logo img{width:210px}.hero{padding:42px 0}.hero-grid{gap:30px}h1{font-size:45px}.hero-card{min-height:auto}.steps,.dest-grid,.faq,.dest-columns,.footer-grid{grid-template-columns:1fr}.field.half,.field.third{width:100%}.form-actions{flex-direction:column-reverse}.form-actions .btn{width:100%}.dest-modal-hero{height:220px}.dest-modal-body{padding:18px}}
+
+/* KF_VISUAL_EDITOR_V1 */
+.kf-custom{padding:70px 0;background:#fff}
+.kf-custom.kf-dark{background:var(--navy);color:#fff}
+.kf-custom.kf-soft{background:#f4f7fb}
+.kf-custom .kf-head{text-align:center;max-width:760px;margin:0 auto 28px}
+.kf-custom .kf-head h2{font-size:clamp(30px,4vw,48px);margin:8px 0 10px}
+.kf-custom .kf-head p{color:var(--muted);margin:0}
+.kf-custom.kf-dark .kf-head p{color:#c2d1e1}
+.kf-cards{display:grid;grid-template-columns:repeat(var(--kf-cols,3),minmax(0,1fr));gap:18px}
+.kf-card{background:#fff;border:1px solid var(--line);border-radius:var(--kf-radius,18px);padding:22px;box-shadow:var(--shadow2);overflow:hidden}
+.kf-dark .kf-card{background:#102846;border-color:rgba(255,255,255,.12);color:#fff}
+.kf-card img{width:100%;height:180px;object-fit:cover;border-radius:calc(var(--kf-radius,18px) - 6px);margin-bottom:14px}
+.kf-card .kf-icon{font-size:28px;margin-bottom:8px}
+.kf-card h3{font-size:23px;margin:4px 0 8px}
+.kf-card p{margin:0;color:var(--muted)}
+.kf-dark .kf-card p{color:#c2d1e1}
+.kf-card .kf-btn{display:inline-flex;margin-top:15px;padding:9px 13px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800}
+body.kf-visual [data-kf-path]{outline:1px dashed rgba(35,103,216,.55);outline-offset:3px;cursor:pointer}
+body.kf-visual [data-kf-path]:hover{outline:2px solid #2367d8;background-color:rgba(35,103,216,.04)}
+body.kf-visual section[data-kf-section]{position:relative}
+.hero-card,.big-compare,.step,.fee-box,.form-card,.form-side,.dest-card,.faq details,.kf-card{border-radius:var(--kf-radius,18px)!important}
+@media(max-width:800px){.kf-cards{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
@@ -201,6 +224,84 @@ $('nextBtn').onclick=()=>{if(!validateCurrent())return;currentStep++;showStep();
 $('destClose').onclick=closeDest;
 $('destModal').onclick=e=>{if(e.target===$('destModal'))closeDest();};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDest();});
+
+/* KF_VISUAL_EDITOR_V1 */
+const KF_BASE_RENDER=render;
+render=function(){KF_BASE_RENDER();KF_afterRender();};
+window.KF_setSite=function(v){SITE=JSON.parse(JSON.stringify(v));render();};
+window.KF_getSite=function(){return JSON.parse(JSON.stringify(SITE));};
+
+function KF_path(el,path){if(el)el.dataset.kfPath=path}
+function KF_customKey(s,i){return 'custom:'+(s.anchor||('area-'+i))}
+function KF_afterRender(){
+  if(!SITE)return;
+  SITE.branding=SITE.branding||{};
+  SITE.design=SITE.design||{};
+  const h=Math.max(45,Math.min(160,Number(SITE.branding.logoHeight)||68));
+  document.documentElement.style.setProperty('--kf-logo-height',h+'px');
+  if(SITE.design.primaryColor)document.documentElement.style.setProperty('--navy',SITE.design.primaryColor);
+  if(SITE.design.accentColor)document.documentElement.style.setProperty('--gold',SITE.design.accentColor);
+  document.documentElement.style.setProperty('--kf-radius',(Number(SITE.design.cardRadius)||18)+'px');
+  if(Number(SITE.design.contentWidth)>700){
+    document.querySelectorAll('.container').forEach(x=>x.style.width='min('+Number(SITE.design.contentWidth)+'px,calc(100% - 32px))');
+  }
+
+  document.querySelectorAll('.kf-custom').forEach(x=>x.remove());
+  const main=$('top'), faq=$('faq');
+  (Array.isArray(SITE.customSections)?SITE.customSections:[]).forEach((s,i)=>{
+    if(s.enabled===false)return;
+    const sec=document.createElement('section');
+    sec.id=s.anchor||('area-'+i);
+    sec.className='kf-custom '+(s.style==='dark'?'kf-dark':s.style==='soft'?'kf-soft':'');
+    sec.dataset.kfSection=KF_customKey(s,i);
+    if(s.backgroundColor)sec.style.background=s.backgroundColor;
+    if(s.textColor)sec.style.color=s.textColor;
+    const cols=Math.max(1,Math.min(4,Number(s.columns)||3));
+    const cards=(Array.isArray(s.cards)?s.cards:[]).map((c,j)=>{
+      const img=c.image?'<img src="'+esc(c.image)+'" data-kf-path="customSections.'+i+'.cards.'+j+'.image">':'';
+      const icon=c.icon?'<div class="kf-icon" data-kf-path="customSections.'+i+'.cards.'+j+'.icon">'+esc(c.icon)+'</div>':'';
+      const btn=c.buttonLabel?'<a class="kf-btn" href="'+esc(c.buttonHref||'#')+'" data-kf-path="customSections.'+i+'.cards.'+j+'.buttonLabel">'+esc(c.buttonLabel)+'</a>':'';
+      const st=(c.backgroundColor?'background:'+esc(c.backgroundColor)+';':'')+(c.textColor?'color:'+esc(c.textColor)+';':'');
+      return '<article class="kf-card" style="'+st+'" data-kf-card="'+j+'">'+img+icon+'<h3 data-kf-path="customSections.'+i+'.cards.'+j+'.title">'+esc(c.title||'')+'</h3><p data-kf-path="customSections.'+i+'.cards.'+j+'.text">'+esc(c.text||'')+'</p>'+btn+'</article>';
+    }).join('');
+    sec.innerHTML='<div class="container"><div class="kf-head"><div class="kicker" data-kf-path="customSections.'+i+'.kicker">'+esc(s.kicker||'')+'</div><h2 data-kf-path="customSections.'+i+'.title">'+esc(s.title||'')+'</h2><p data-kf-path="customSections.'+i+'.description">'+esc(s.description||'')+'</p></div><div class="kf-cards" style="--kf-cols:'+cols+'">'+cards+'</div></div>';
+    main.insertBefore(sec,faq);
+  });
+
+  const sectionMap={hero:$('hero'),idea:$('idea'),process:$('process'),fee:$('fee'),request:$('request'),destinations:$('destinations-guide'),faq:$('faq')};
+  Object.entries(sectionMap).forEach(([k,e])=>{if(e)e.dataset.kfSection=k});
+  document.querySelectorAll('.kf-custom').forEach(e=>sectionMap[e.dataset.kfSection]=e);
+  const defaults=['hero','idea','process','fee','request','destinations'].concat(Object.keys(sectionMap).filter(k=>k.startsWith('custom:'))).concat(['faq']);
+  const vs=SITE.visualSettings||{};
+  const order=(Array.isArray(vs.layoutOrder)?vs.layoutOrder:[]).concat(defaults).filter((v,i,a)=>sectionMap[v]&&a.indexOf(v)===i);
+  order.forEach(k=>main.appendChild(sectionMap[k]));
+  const hidden=new Set(Array.isArray(vs.hiddenSectionKeys)?vs.hiddenSectionKeys:[]);
+  Object.entries(sectionMap).forEach(([k,e])=>{if(e)e.style.display=hidden.has(k)?'none':''});
+
+  const staticMap={
+    logo:'branding.logo',footerLogo:'branding.logo',
+    heroEyebrow:'hero.eyebrow',heroBefore:'hero.titleBefore',heroHighlight:'hero.titleHighlight',heroAfter:'hero.titleAfter',heroLead:'hero.lead',heroStrong:'hero.leadStrong',heroPrimary:'hero.primaryCta',heroSecondary:'hero.secondaryCta',
+    exLabel:'hero.example.label',exTitle:'hero.example.title',exDesc:'hero.example.description',exTotalLabel:'hero.example.totalLabel',exTotal:'hero.example.total',exDuration:'hero.example.duration',exDisclaimer:'hero.example.disclaimer',
+    ideaKicker:'idea.kicker',ideaTitle:'idea.title',ideaDesc:'idea.description',regularTitle:'idea.regular.title',regularDesc:'idea.regular.description',regularBudget:'idea.regular.budget',regularLabel:'idea.regular.budgetLabel',smartTitle:'idea.smart.title',smartDesc:'idea.smart.description',smartBudget:'idea.smart.budget',smartLabel:'idea.smart.budgetLabel',
+    processKicker:'process.kicker',processTitle:'process.title',processDesc:'process.description',
+    feeKicker:'fee.kicker',feeDesc:'fee.description',feeBadge1:'fee.badge1',feeBadge2:'fee.badge2',calcLabel:'fee.calculatorLabel',calcResultLabel:'fee.calculatorResultLabel',calcDisclaimer:'fee.calculatorDisclaimer',
+    formKicker:'form.kicker',formTitle:'form.title',formDesc:'form.description',sideTitle:'form.sidebarTitle',sideIntro:'form.sidebarIntro',security:'form.securityText',agreementText:'form.agreementText',prevBtn:'form.previousButton',nextBtn:'form.nextButton',submitBtn:'form.submitButton',
+    destKicker:'destinationsSection.kicker',destTitle:'destinationsSection.title',destDesc:'destinationsSection.description',destNote:'destinationsSection.note',
+    faqKicker:'faq.kicker',faqTitle:'faq.title',footerDesc:'footer.description',copyright:'footer.copyright',footerDisclaimer:'footer.disclaimer'
+  };
+  Object.entries(staticMap).forEach(([id,p])=>KF_path($(id),p));
+  document.querySelectorAll('#steps .step').forEach((e,i)=>{KF_path(e.querySelector('.num'),'process.steps.'+i+'.number');KF_path(e.querySelector('h3'),'process.steps.'+i+'.title');KF_path(e.querySelector('p'),'process.steps.'+i+'.text')});
+  document.querySelectorAll('#heroProofs .proof').forEach((e,i)=>KF_path(e,'hero.proofs.'+i));
+  document.querySelectorAll('#faqItems details').forEach((e,i)=>{KF_path(e.querySelector('summary'),'faq.items.'+i+'.question');KF_path(e.querySelector('p'),'faq.items.'+i+'.answer')});
+  document.querySelectorAll('#destGrid .dest-card').forEach((e,i)=>{KF_path(e.querySelector('img'),'destinationsSection.destinations.'+i+'.image');KF_path(e.querySelector('h3'),'destinationsSection.destinations.'+i+'.name');const p=e.querySelector('p');if(p)KF_path(p,'destinationsSection.destinations.'+i+'.tag')});
+
+  if(new URLSearchParams(location.search).get('visual')==='1'&&window.parent!==window){
+    document.body.classList.add('kf-visual');
+    document.querySelectorAll('a,button,input,select,textarea').forEach(e=>e.addEventListener('click',ev=>ev.preventDefault(),true));
+    window.parent.postMessage({type:'kf-rendered'},location.origin);
+  }
+}
+
 loadSite();
 </script>
 </body>
