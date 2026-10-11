@@ -48,30 +48,19 @@ body.kf-visual [data-kf-path]{outline:1px dashed rgba(34,105,175,.55);outline-of
 .hero h1,.hero .lead,.hero .eyebrow,.hero-actions,.trust{position:relative;z-index:2}
 @media(max-width:1000px){.brand{min-width:0}.brand-words strong{font-size:29px}.brand-emblem{width:62px;height:62px;flex-basis:62px}}
 @media(max-width:680px){.brand-lockup{gap:8px}.brand-emblem{width:48px;height:48px;flex-basis:48px}.brand-words strong{font-size:23px}.brand-words small{font-size:8.5px}.brand{max-width:250px}}
+
+/* NEW_LOGO_ARTWORK */
+.brand{min-width:0}
+.site-logo{display:block;width:360px;max-width:42vw;height:auto;object-fit:contain}
+.footer-logo{display:block;width:min(420px,100%);height:auto;background:#fff;border-radius:14px;padding:4px}
+@media(max-width:1000px){.site-logo{width:310px;max-width:48vw}}
+@media(max-width:680px){.site-logo{width:220px;max-width:65vw}.footer-logo{width:300px}}
 </style>
 </head>
 <body>
 <div class="topline"><div class="container" id="notice"></div></div>
 <header><div class="container nav">
-<a class="brand" href="#top" aria-label="רואים עולם">
-    <span class="brand-lockup">
-      <span class="brand-emblem" aria-hidden="true">
-        <svg viewBox="0 0 120 120" focusable="false">
-          <defs>
-            <linearGradient id="bmBlue" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#174d86"/><stop offset="1" stop-color="#062044"/></linearGradient>
-            <linearGradient id="bmGold" x1="0" x2="1"><stop stop-color="#ad741e"/><stop offset=".48" stop-color="#f0cf78"/><stop offset="1" stop-color="#b77a1d"/></linearGradient>
-          </defs>
-          <circle cx="55" cy="52" r="35" fill="url(#bmBlue)"/>
-          <path d="M31 39c11-14 27-21 44-16l-6 9-14 4-7 9-12-1zM45 55l12-8 17 4 5 11-12 7-7 11-15-6-6-10z" fill="url(#bmGold)"/>
-          <path d="M18 83c30-7 56-2 84 17-29-4-55-3-82 8 14-9 14-18-2-25z" fill="url(#bmGold)"/>
-          <path d="M19 92c28 1 54 8 77 25-26-7-52-9-76-3 11-7 11-15-1-22z" fill="url(#bmBlue)"/>
-          <path d="M82 19c9-10 18-16 28-19l-3 8 12 6-4 5-15-2-9 16-5-2 4-14-10-3z" fill="url(#bmGold)"/>
-          <path d="M82 28c13 24 11 48-7 70" fill="none" stroke="url(#bmGold)" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </span>
-      <span class="brand-words"><strong>רואים עולם</strong><small>חו״ל כשר. לא רק לעשירים.</small></span>
-    </span>
-  </a>
+<a class="brand" href="#top" aria-label="רואים עולם"><img class="site-logo" src="/images/roim-olam-logo.svg" alt="רואים עולם — חו״ל כשר. לא רק לעשירים."></a>
 <nav class="navlinks" id="menu"></nav>
 <a class="btn btn-dark navcta" href="#request" id="navCta">בנו לי נופש</a>
 <button class="menu-toggle" id="toggle" aria-label="פתיחת תפריט">☰</button>
@@ -109,7 +98,7 @@ body.kf-visual [data-kf-path]{outline:1px dashed rgba(34,105,175,.55);outline-of
 
 <div class="modal" id="destModal"><div class="modal-card"><button class="modal-close" id="destClose">×</button><div class="modal-hero"><img id="dmImage"><div class="modal-title"><small id="dmCountry"></small><h2 id="dmName"></h2></div></div><div class="modal-body"><p id="dmIntro"></p><div class="modal-cols"><div class="info-box"><h3 id="dmAttractionsTitle"></h3><ul id="dmAttractions"></ul></div><div class="info-box jewish"><h3 id="dmJewishTitle"></h3><ul id="dmJewish"></ul></div></div><div class="modal-actions"><div class="source-links"><a id="dmTour" target="_blank"></a><a id="dmJew" target="_blank"></a></div><button class="btn btn-gold" id="dmRequest"></button></div></div></div></div>
 
-<footer><div class="container"><div class="footer-grid"><div><div class="footer-brand"><span class="footer-brand-title">רואים עולם</span><span class="footer-brand-sub">חו״ל כשר. לא רק לעשירים.</span></div><p id="footerDesc"></p></div><div><h3>ניווט</h3><div class="footer-nav" id="footerNav"></div></div></div><div class="foot"><span id="copyright"></span><span id="footerDisclaimer"></span></div></div></footer>
+<footer><div class="container"><div class="footer-grid"><div><img class="footer-logo" src="/images/roim-olam-logo.svg" alt="רואים עולם"><p id="footerDesc"></p></div><div><h3>ניווט</h3><div class="footer-nav" id="footerNav"></div></div></div><div class="foot"><span id="copyright"></span><span id="footerDisclaimer"></span></div></div></footer>
 
 <script>
 var SITE=null,currentStep=0;
