@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>כשר פליי | עריכה ויזואלית</title>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>רואים עולם | עריכה ויזואלית</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&display=swap');
 *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:"Noto Sans Hebrew",Arial,sans-serif;background:#eef2f7;color:#17243a;overflow:hidden}
@@ -9,14 +9,14 @@ button,input,textarea,select{font:inherit}.top{height:62px;background:#fff;borde
 .rows{display:grid;gap:6px}.row{border:1px solid #dfe6ef;border-radius:9px;padding:7px;display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center}.row b{font-size:12px}.tools{display:flex;gap:3px}.tools button{width:28px;height:28px;border:1px solid #dfe6ef;background:#fff;border-radius:6px;padding:0}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{border:1px solid #dfe6ef;background:#fff;border-radius:8px;padding:7px 9px}.actions .danger{color:#b83242}.status{font-size:11px;color:#6d7b8d;min-width:90px}.toast{position:fixed;left:15px;bottom:15px;background:#071a34;color:#fff;padding:10px 13px;border-radius:9px;display:none;z-index:50}
 @media(max-width:900px){body{overflow:auto}.app{grid-template-columns:1fr;height:auto}.side{border-left:0}.work{padding:8px}.canvas iframe{height:72vh}}
 </style></head><body>
-<div class="top"><div class="brand">כשר פליי — עריכה ויזואלית</div><button data-dev="desktop">מחשב</button><button data-dev="tablet">טאבלט</button><button data-dev="mobile">טלפון</button><button id="add">＋ אזור ריבועים</button><a href="/admin/">ניהול רגיל</a><button class="save" id="save">פרסום</button><span class="status" id="status">טוען…</span></div>
+<div class="top"><div class="brand">רואים עולם — עריכה ויזואלית</div><button data-dev="desktop">מחשב</button><button data-dev="tablet">טאבלט</button><button data-dev="mobile">טלפון</button><button id="add">＋ אזור ריבועים</button><a href="/admin/">ניהול רגיל</a><button class="save" id="save">פרסום</button><span class="status" id="status">טוען…</span></div>
 <div class="app"><aside class="side">
 <div class="panel"><h3>עריכת הפריט שנבחר</h3><div class="body" id="ins"><div class="hint">לחץ על טקסט או תמונה בתוך האתר.</div></div></div>
 <div class="panel"><h3>מבנה האתר</h3><div class="body"><div class="rows" id="rows"></div></div></div>
 <div class="panel"><h3>עיצוב מהיר</h3><div class="body" id="design"></div></div>
 </aside><main class="work"><div class="canvas" id="canvas"><iframe id="frame" src="/?visual=1"></iframe></div></main></div><div class="toast" id="toast"></div>
 <script>
-var REPO=localStorage.getItem('kosherFlyRepo')||'0534124060/kosher-fly',site=null,selected='',token=sessionStorage.getItem('kfVisualToken')||'',pending=new Map();
+var REPO=localStorage.getItem('roimOlamRepo')||localStorage.getItem('kosherFlyRepo')||'0534124060/kosher-fly',site=null,selected='',token=sessionStorage.getItem('kfVisualToken')||'',pending=new Map();
 var frame=document.getElementById('frame'),ins=document.getElementById('ins'),rows=document.getElementById('rows'),statusEl=document.getElementById('status'),canvas=document.getElementById('canvas');
 var labels={hero:'אזור ראשי',idea:'איך זה יכול להיות זול',process:'איך זה עובד',fee:'מחיר השירות',request:'טופס בקשה',destinations:'יעדים',faq:'שאלות ותשובות'};
 function toast(s){var t=document.getElementById('toast');t.textContent=s;t.style.display='block';setTimeout(function(){t.style.display='none'},2600)}
