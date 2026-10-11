@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>כשר פליי | מערכת ניהול</title>
+<title>רואים עולם | מערכת ניהול</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;600;700;800&display=swap');
 body{font-family:"Noto Sans Hebrew",Arial,sans-serif;margin:0;background:#f4f7fb;color:#152238}
@@ -23,7 +23,7 @@ small{display:block;margin-top:8px;color:#7b8797}.help{font-size:13px;line-heigh
 </head>
 <body>
 <div class="setup" id="setup">
-  <h1>מערכת הניהול של כשר פליי</h1>
+  <h1>מערכת הניהול של רואים עולם</h1>
   <p class="muted">בהפעלה הראשונה בלבד, הזן את שם מאגר GitHub שבו האתר שמור.</p>
   <div class="box">לדוגמה, אם כתובת המאגר היא <b>github.com/moshe/kosher-fly</b>, יש לכתוב: <b>moshe/kosher-fly</b></div>
   <label for="repo">GitHub repository</label>
@@ -76,7 +76,7 @@ const fields=[
  {label:'איך זה יכול להיות זול',name:'idea',widget:'object',fields:[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),
    {label:'הזמנה רגילה',name:'regular',widget:'object',fields:[F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('תקציב','budget'),F.s('טקסט ליד התקציב','budgetLabel'),{label:'נקודות',name:'points',widget:'list',fields:pointFields}]},
-   {label:'תכנון כשר פליי',name:'smart',widget:'object',fields:[F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('תקציב','budget'),F.s('טקסט ליד התקציב','budgetLabel'),{label:'נקודות',name:'points',widget:'list',fields:pointFields}]}
+   {label:'תכנון רואים עולם',name:'smart',widget:'object',fields:[F.s('כותרת','title'),F.s('תיאור','description','text'),F.s('תקציב','budget'),F.s('טקסט ליד התקציב','budgetLabel'),{label:'נקודות',name:'points',widget:'list',fields:pointFields}]}
  ]},
  {label:'איך זה עובד',name:'process',widget:'object',fields:[
    F.s('כותרת קטנה','kicker'),F.s('כותרת','title'),F.s('תיאור','description','text'),
@@ -159,8 +159,8 @@ function launch(repo){
 }
 
 const params=new URLSearchParams(location.search);
-if(params.get('setup')==='1'){localStorage.removeItem('kosherFlyRepo');history.replaceState(null,'','/admin/');}
-const saved=localStorage.getItem('kosherFlyRepo');
+if(params.get('setup')==='1'){localStorage.removeItem('roimOlamRepo');history.replaceState(null,'','/admin/');}
+const saved=localStorage.getItem('roimOlamRepo')||localStorage.getItem('kosherFlyRepo');
 if(saved){launch(saved);}
 document.getElementById('start').onclick=()=>{
   const repo=document.getElementById('repo').value.trim();
