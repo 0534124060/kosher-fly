@@ -19,7 +19,7 @@
         "country": "הונגריה",
         "tourUrl": "https://www.budapestinfo.hu/",
         "tag": "עיר אירופאית קסומה עם תשתית יהודית חזקה",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1756413664903-159797c47477?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       },
       {
         "jewish": [
@@ -39,7 +39,7 @@
         "country": "פולין",
         "tourUrl": "https://visitkrakow.com/",
         "tag": "היסטוריה, עיר עתיקה ורובע יהודי. הרי זקופנה המרהיבים, בחורף נופים מושלגים ואתרי סקי זולים",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1699791915109-c227726d2457?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       },
       {
         "jewish": [
@@ -58,7 +58,7 @@
         "country": "רומניה",
         "tourUrl": "https://romania.travel/",
         "tag": "מחירים נוחים + עיר ואפשרויות לטיולי יום",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1571079977652-fdd830b2eb63?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       },
       {
         "jewish": [
@@ -77,7 +77,7 @@
         "country": "בולגריה",
         "tourUrl": "https://www.visitsofia.bg/en/",
         "tag": "קרובה, זולה יחסית ונוחה לחופשה קצרה",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1753529179550-c6aff1b76e6e?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       },
       {
         "jewish": [
@@ -96,7 +96,7 @@
         "country": "צ׳כיה",
         "tourUrl": "https://prague.eu/en/",
         "tag": "עיר עם היסטורייה יהודית וארכיטקטורה מדהימה.",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1767945976688-bc8e119f3796?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       },
       {
         "jewish": [
@@ -115,7 +115,7 @@
         "country": "מונטנגרו",
         "tourUrl": "https://www.montenegro.travel/en",
         "tag": "ים, הרים ונופים דרמטיים",
-        "image": ""
+        "image": "https://images.unsplash.com/photo-1641234354133-df0ae680f2db?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=76&w=1600"
       }
     ],
     "attractionsTitle": "✈ מה עושים שם?",
@@ -137,7 +137,7 @@
     "nextButton": "המשך",
     "previousButton": "הקודם",
     "submitButton": "שליחת הבקשה — ללא תשלום",
-    "subject": "בקשת נופש חדשה מאתר כשר פלייט",
+    "subject": "בקשת נופש חדשה מאתר רואים עולם — רואים עולם",
     "securityText": "אין חיוב בעת מילוי הטופס. זמינות ומחירים באתרי הטיסות והמלונות יכולים להשתנות עד לרגע ההזמנה בפועל.",
     "sections": [
       {
@@ -396,9 +396,9 @@
       }
     ],
     "sidebarIntro": "בס''ד בתוך 2 ימי עסקים נציג לכם תוכנית מוצעת. בשלב הזה עדיין לא משלמים דבר.",
-    "autoResponse": "קיבלנו את בקשתכם בכשר פליי. אין חיוב בשלב זה. בעזרת ה׳, בתוך עד 2 ימי עסקים נשלח לכם תצוגה מקדימה של תוכנית הנופש שמצאנו.",
+    "autoResponse": "קיבלנו את בקשתכם ברואים עולם. אין חיוב בשלב זה. בעזרת ה׳, בתוך עד 2 ימי עסקים נשלח לכם תצוגה מקדימה של תוכנית הנופש שמצאנו.",
     "kicker": "בואו נתחיל מהפרטים שלכם",
-    "agreementText": "אני מבין/ה שאין חיוב בעת שליחת הבקשה; בתוך 2 ימי עסקים תוצג לי תוכנית מוצעת, ורק אם אבחר לקבל את הקישורים והפירוט המלא אשלם את מחיר השירות לכל יום נסיעה.",
+    "agreementText": "אני מבין/ה שאין חיוב בעת שליחת הבקשה. קודם אקבל הצעה ראשונית, ורק אם אבחר להמשיך אשלם לפי מסלול השירות שבחרתי.",
     "title": "מלאו את הטופס — ונחפש עבורכם את החופשה שמתאימה באמת.",
     "sidebarTitle": "מה תקבלו מאיתנו?",
     "description": "ככל שתתנו יותר מידע, נוכל לכוון טוב יותר ליעד, למחיר ולרמת ההתאמה שאתם מחפשים.",
@@ -460,15 +460,11 @@
   },
   "navigation": [
     {
-      "label": "איך זה יכול להיות זול?",
-      "href": "#idea"
-    },
-    {
-      "label": "איך זה עובד?",
+      "label": "איך זה עובד",
       "href": "#process"
     },
     {
-      "label": "מתי משלמים?",
+      "label": "שירות ומחירים",
       "href": "#fee"
     },
     {
@@ -543,7 +539,7 @@
       ]
     },
     "smart": {
-      "title": "בתכנון \"כשר פלייט\" מותאם לתקציב",
+      "title": "בתכנון \"רואים עולם\" מותאם לתקציב",
       "description": "מתחילים במה חשוב לכם ובכמה אתם רוצים להוציא — ורק אז בוחרים את היעד שהכי מתאים.",
       "budget": " מגדירים תקציב לדוגמא שמתאים לכם",
       "budgetLabel": "ובונים תוכנית תפורה ומושלמת עבורכם",
@@ -598,7 +594,7 @@
       ],
       "disclaimer": "המספרים הם דוגמה שיווקית להמחשה בלבד ואינם הצעת מחיר. המחיר בפועל משתנה לפי תאריכים, מספר נוסעים, זמינות, כבודה ורמת המלון."
     },
-    "backgroundImage": "",
+    "backgroundImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&fm=jpg&q=82&w=2000",
     "primaryCta": "אני רוצה הצעה מותאמת",
     "proofs": [
       "✓ יעד גמיש לפי המחיר",
@@ -613,15 +609,16 @@
     "secondaryCta": "איך מגיעים למחיר כזה?"
   },
   "footer": {
-    "description": "שירות תכנון נופש אישי שמתחיל בתקציב, בצרכים ובכשרות — ורק אחר כך בוחר את היעד.",
-    "copyright": "© {year} כשר פליי",
+    "description": "תכנון נופש כשר וחכם שמתחיל בתקציב, בצרכים ובחוויה שאתם רוצים — ורק אחר כך בוחר את היעד.",
+    "copyright": "© {year} רואים עולם",
     "disclaimer": "מחירים המופיעים באתר כדוגמאות אינם התחייבות למחיר או זמינות."
   },
   "branding": {
-    "siteName": "כשר פלייט",
-    "slogan": "חו''ל כשר. לא רק לעשירים",
-    "logo": "/images/uploads/לוגו-כשר-פליי-עם-גלובוס-ומטוס-золотого.png",
-    "logoAlt": "כשר פלייט — לטוס בזול למהדרין"
+    "siteName": "רואים עולם",
+    "slogan": "חו״ל כשר. לא רק לעשירים.",
+    "logo": "/images/roim-olam-logo.svg",
+    "logoAlt": "רואים עולם — חו״ל כשר. לא רק לעשירים.",
+    "logoHeight": 78
   },
   "pricing": {
     "kicker": "שני מסלולים. אתם בוחרים כמה רחוק נלך בשבילכם.",
@@ -674,5 +671,10 @@
     ],
     "hiddenSectionKeys": []
   },
-  "design": {}
+  "design": {
+    "primaryColor": "#071a2d",
+    "accentColor": "#c5963d",
+    "cardRadius": 26,
+    "contentWidth": 1220
+  }
 }
