@@ -32,12 +32,46 @@ body.kf-visual [data-kf-path]{outline:1px dashed rgba(34,105,175,.55);outline-of
 @media(max-width:1000px){.navlinks{display:none;position:absolute;top:92px;right:16px;left:16px;flex-direction:column;background:#fff;padding:18px;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow)}.navlinks.show{display:flex}.navcta{display:none}.menu-toggle{display:block}.hero-grid,.compare-grid,.pricing-grid,.request-grid{grid-template-columns:1fr}.hero{min-height:auto}.steps{grid-template-columns:1fr 1fr}.request-side{position:static}.dest-grid{grid-template-columns:1fr 1fr}.price-card>p{min-height:0}}
 @media(max-width:680px){.container{width:min(100% - 24px,1220px)}.topline .container{padding:7px 0;gap:8px}.nav{height:76px}.brand img{width:205px;max-height:60px}.navlinks{top:76px}.hero{padding:62px 0 55px}.hero:before{background:rgba(248,245,239,.9)}.hero-grid{gap:32px}.hero h1{font-size:53px}.lead{font-size:17px}.trip-card{padding:25px}.trust span{font-size:11px}section{padding:74px 0}.steps,.dest-grid,.faq,.modal-cols,.footer-grid{grid-template-columns:1fr}.field.half,.field.third{width:100%}.price-card{padding:26px}.price{font-size:54px}.actions{flex-direction:column-reverse}.actions .btn{width:100%}.footer-logo{max-width:100%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important;transition:none!important}.btn,.step,.compare,.price-card,.dest-card{transition:none!important}}
+
+/* ROIM_OLAM_FIX_20261011 */
+.brand{min-width:330px}
+.brand-lockup{display:flex;align-items:center;gap:13px;direction:rtl}
+.brand-emblem{width:72px;height:72px;display:block;flex:0 0 72px}
+.brand-emblem svg{width:100%;height:100%;display:block}
+.brand-words{display:flex;flex-direction:column;line-height:1.05}
+.brand-words strong{font-family:"Frank Ruhl Libre","Noto Sans Hebrew",serif;font-size:34px;font-weight:900;letter-spacing:-.035em;color:#092c56;white-space:nowrap}
+.brand-words small{font-size:11px;color:#75531d;margin-top:6px;white-space:nowrap}
+.footer-brand{display:flex;flex-direction:column;margin-bottom:12px}
+.footer-brand-title{font-family:"Frank Ruhl Libre","Noto Sans Hebrew",serif;font-size:38px;font-weight:900;color:#fff;line-height:1}
+.footer-brand-sub{color:#efd48a;font-size:13px;margin-top:7px}
+.hero .container,.hero-grid,.hero-grid>div,.trip-card{visibility:visible!important;opacity:1}
+.hero h1,.hero .lead,.hero .eyebrow,.hero-actions,.trust{position:relative;z-index:2}
+@media(max-width:1000px){.brand{min-width:0}.brand-words strong{font-size:29px}.brand-emblem{width:62px;height:62px;flex-basis:62px}}
+@media(max-width:680px){.brand-lockup{gap:8px}.brand-emblem{width:48px;height:48px;flex-basis:48px}.brand-words strong{font-size:23px}.brand-words small{font-size:8.5px}.brand{max-width:250px}}
 </style>
 </head>
 <body>
 <div class="topline"><div class="container" id="notice"></div></div>
 <header><div class="container nav">
-<a class="brand" href="#top"><img id="logo" src="/images/roim-olam-logo.svg" alt="רואים עולם"></a>
+<a class="brand" href="#top" aria-label="רואים עולם">
+    <span class="brand-lockup">
+      <span class="brand-emblem" aria-hidden="true">
+        <svg viewBox="0 0 120 120" focusable="false">
+          <defs>
+            <linearGradient id="bmBlue" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#174d86"/><stop offset="1" stop-color="#062044"/></linearGradient>
+            <linearGradient id="bmGold" x1="0" x2="1"><stop stop-color="#ad741e"/><stop offset=".48" stop-color="#f0cf78"/><stop offset="1" stop-color="#b77a1d"/></linearGradient>
+          </defs>
+          <circle cx="55" cy="52" r="35" fill="url(#bmBlue)"/>
+          <path d="M31 39c11-14 27-21 44-16l-6 9-14 4-7 9-12-1zM45 55l12-8 17 4 5 11-12 7-7 11-15-6-6-10z" fill="url(#bmGold)"/>
+          <path d="M18 83c30-7 56-2 84 17-29-4-55-3-82 8 14-9 14-18-2-25z" fill="url(#bmGold)"/>
+          <path d="M19 92c28 1 54 8 77 25-26-7-52-9-76-3 11-7 11-15-1-22z" fill="url(#bmBlue)"/>
+          <path d="M82 19c9-10 18-16 28-19l-3 8 12 6-4 5-15-2-9 16-5-2 4-14-10-3z" fill="url(#bmGold)"/>
+          <path d="M82 28c13 24 11 48-7 70" fill="none" stroke="url(#bmGold)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-words"><strong>רואים עולם</strong><small>חו״ל כשר. לא רק לעשירים.</small></span>
+    </span>
+  </a>
 <nav class="navlinks" id="menu"></nav>
 <a class="btn btn-dark navcta" href="#request" id="navCta">בנו לי נופש</a>
 <button class="menu-toggle" id="toggle" aria-label="פתיחת תפריט">☰</button>
@@ -75,50 +109,205 @@ body.kf-visual [data-kf-path]{outline:1px dashed rgba(34,105,175,.55);outline-of
 
 <div class="modal" id="destModal"><div class="modal-card"><button class="modal-close" id="destClose">×</button><div class="modal-hero"><img id="dmImage"><div class="modal-title"><small id="dmCountry"></small><h2 id="dmName"></h2></div></div><div class="modal-body"><p id="dmIntro"></p><div class="modal-cols"><div class="info-box"><h3 id="dmAttractionsTitle"></h3><ul id="dmAttractions"></ul></div><div class="info-box jewish"><h3 id="dmJewishTitle"></h3><ul id="dmJewish"></ul></div></div><div class="modal-actions"><div class="source-links"><a id="dmTour" target="_blank"></a><a id="dmJew" target="_blank"></a></div><button class="btn btn-gold" id="dmRequest"></button></div></div></div></div>
 
-<footer><div class="container"><div class="footer-grid"><div><img class="footer-logo" id="footerLogo" src="/images/roim-olam-logo.svg" alt="רואים עולם"><p id="footerDesc"></p></div><div><h3>ניווט</h3><div class="footer-nav" id="footerNav"></div></div></div><div class="foot"><span id="copyright"></span><span id="footerDisclaimer"></span></div></div></footer>
+<footer><div class="container"><div class="footer-grid"><div><div class="footer-brand"><span class="footer-brand-title">רואים עולם</span><span class="footer-brand-sub">חו״ל כשר. לא רק לעשירים.</span></div><p id="footerDesc"></p></div><div><h3>ניווט</h3><div class="footer-nav" id="footerNav"></div></div></div><div class="foot"><span id="copyright"></span><span id="footerDisclaimer"></span></div></div></footer>
 
 <script>
 var SITE=null,currentStep=0;
 function $(id){return document.getElementById(id)}
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]})}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]})}
 function txt(id,v){var e=$(id);if(e)e.textContent=v==null?"":v}
 function money(n){return new Intl.NumberFormat("he-IL",{style:"currency",currency:"ILS",maximumFractionDigits:0}).format(Number(n)||0)}
-async function loadSite(){try{var r=await fetch("/content/site.json?ts="+Date.now(),{cache:"no-store"});if(!r.ok)throw 0;SITE=await r.json();render()}catch(e){document.body.innerHTML='<div style="padding:40px;font-family:Arial">לא ניתן לטעון את תוכן האתר.</div>'}}
-function render(){
- document.title=(SITE.branding?.siteName||"רואים עולם")+" | "+(SITE.branding?.slogan||"חו״ל כשר. לא רק לעשירים.");
- $("logo").src=SITE.branding?.logo||"/images/roim-olam-logo.svg";$("footerLogo").src=$("logo").src;
- $("notice").innerHTML=(SITE.notice||[]).map(function(x){return "<span>"+esc(x)+"</span>"}).join("");
- $("menu").innerHTML=(SITE.navigation||[]).filter(function(x){return x.href!=="#request"}).map(function(x){return '<a href="'+esc(x.href)+'">'+esc(x.label)+"</a>"}).join("");
- $("footerNav").innerHTML=(SITE.navigation||[]).map(function(x){return '<a href="'+esc(x.href)+'">'+esc(x.label)+"</a>"}).join("");
- var cta=(SITE.navigation||[]).find(function(x){return x.href==="#request"});txt("navCta",cta?cta.label:"בנו לי נופש");
- $("hero").style.backgroundImage='url("'+esc(SITE.hero?.backgroundImage||"")+'")';
- ["heroEyebrow","heroBefore","heroHighlight","heroAfter","heroLead","heroStrong"].forEach(function(id){var map={heroEyebrow:"eyebrow",heroBefore:"titleBefore",heroHighlight:"titleHighlight",heroAfter:"titleAfter",heroLead:"lead",heroStrong:"leadStrong"};txt(id,SITE.hero?.[map[id]])});
- txt("heroPrimary",SITE.hero?.primaryCta);txt("heroSecondary","שירות ומחירים");
- $("heroProofs").innerHTML=(SITE.hero?.proofs||[]).map(function(x){return "<span>"+esc(x)+"</span>"}).join("");
- var ex=SITE.hero?.example||{};txt("exLabel",ex.label);txt("exTitle",ex.title);txt("exDesc",ex.description);txt("exTotalLabel",ex.totalLabel);txt("exTotal",ex.total);txt("exDuration",ex.duration);txt("exDisclaimer",ex.disclaimer);$("exLines").innerHTML=(ex.lines||[]).map(function(x){return '<div class="cost"><span>'+esc(x.label)+"</span><b>"+esc(x.value)+"</b></div>"}).join("");
- txt("ideaKicker",SITE.idea?.kicker);txt("ideaTitle",SITE.idea?.title);txt("ideaDesc",SITE.idea?.description);renderCompare("regular",SITE.idea?.regular||{});renderCompare("smart",SITE.idea?.smart||{});
- txt("processKicker",SITE.process?.kicker);txt("processTitle",SITE.process?.title);txt("processDesc",SITE.process?.description);$("steps").innerHTML=(SITE.process?.steps||[]).map(function(s){return '<article class="step reveal"><div class="num">'+esc(s.number)+'</div><h3>'+esc(s.title)+'</h3><p>'+esc(s.text)+"</p></article>"}).join("");
- renderPricing();
- txt("destKicker",SITE.destinationsSection?.kicker);txt("destTitle",SITE.destinationsSection?.title);txt("destDesc",SITE.destinationsSection?.description);txt("destNote",SITE.destinationsSection?.note);$("destGrid").innerHTML=(SITE.destinationsSection?.destinations||[]).map(function(d,i){return '<article class="dest-card reveal" data-i="'+i+'"><img src="'+esc(d.image||SITE.hero?.backgroundImage||"")+'" alt="'+esc(d.name)+'" loading="lazy"><div class="dest-copy"><span class="dest-country">'+esc(d.country)+'</span><h3>'+esc(d.name)+'</h3><p>'+esc(d.tag)+'</p><span class="dest-open">לסקירה קצרה ←</span></div></article>"}).join("");document.querySelectorAll(".dest-card").forEach(function(c){c.onclick=function(){openDestination(Number(c.dataset.i))}});
- txt("formKicker",SITE.form?.kicker);txt("formTitle",SITE.form?.title);txt("formDesc",SITE.form?.description);txt("sideTitle",SITE.form?.sidebarTitle);txt("sideIntro",SITE.form?.sidebarIntro);txt("security",SITE.form?.securityText);$("sidePoints").innerHTML=(SITE.form?.sidebarPoints||[]).map(function(x){return '<div class="side-point"><div class="side-ico">'+esc(x.icon)+'</div><div><b>'+esc(x.title)+'</b><span>'+esc(x.text)+"</span></div></div>"}).join("");txt("prevBtn",SITE.form?.previousButton);txt("nextBtn",SITE.form?.nextButton);txt("submitBtn",SITE.form?.submitButton);txt("agreementText",SITE.form?.agreementText);$("formSubject").value=SITE.form?.subject||"";$("autoResponse").value=SITE.form?.autoResponse||"";$("tripForm").action="https://formsubmit.co/"+SITE.settings.contactEmail;renderForm();
- txt("faqKicker",SITE.faq?.kicker);txt("faqTitle",SITE.faq?.title);$("faqItems").innerHTML=(SITE.faq?.items||[]).map(function(x){return "<details><summary>"+esc(x.question)+"</summary><p>"+esc(x.answer)+"</p></details>"}).join("");
- txt("footerDesc",SITE.footer?.description);txt("copyright",(SITE.footer?.copyright||"").replace("{year}",new Date().getFullYear()));txt("footerDisclaimer",SITE.footer?.disclaimer);
- document.querySelectorAll("#menu a").forEach(function(a){a.onclick=function(){$("menu").classList.remove("show")}});setupReveal();applyVisualMode();
+
+async function loadSite(){
+  try{
+    var res=await fetch("/content/site.json?ts="+Date.now(),{cache:"no-store"});
+    if(!res.ok)throw new Error("content");
+    SITE=await res.json();
+    render();
+  }catch(err){
+    console.error(err);
+    document.body.innerHTML='<div style="padding:40px;font-family:Arial;direction:rtl">לא ניתן לטעון את תוכן האתר. נסו לרענן את העמוד.</div>';
+  }
 }
-function renderCompare(p,d){txt(p+"Title",d.title);txt(p+"Desc",d.description);txt(p+"Budget",d.budget);txt(p+"Label",d.budgetLabel);$(p+"Points").innerHTML=(d.points||[]).map(function(x){return '<div class="check"><i>✓</i><div><b>'+esc(x.title)+'</b><span>'+esc(x.text)+"</span></div></div>"}).join("")}
-function renderPricing(){var pr=SITE.pricing||{},f=pr.fullPlan||{},d=pr.dailyPlan||{};txt("pricingKicker",pr.kicker);txt("pricingTitle",pr.title);txt("pricingDesc",pr.description);txt("pricingNote",pr.note);txt("fullBadge","מחיר השקה · "+(f.badge||""));txt("fullName",f.name);txt("fullDesc",f.description);txt("fullOld","מחיר רגיל "+money(f.regularPrice));txt("fullPrice",money(f.launchPrice));txt("fullUnit",f.unit);$("fullFeatures").innerHTML=(f.features||[]).map(function(x){return '<div class="feature">'+esc(x)+"</div>"}).join("");txt("fullCta",f.cta);txt("dailyBadge","מחיר השקה · "+(d.badge||""));txt("dailyName",d.name);txt("dailyDesc",d.description);txt("dailyOld","מחיר רגיל "+money(d.regularPrice)+" ליום");txt("dailyPrice",money(d.launchPrice));txt("dailyUnit",d.unit);$("dailyFeatures").innerHTML=(d.features||[]).map(function(x){return '<div class="feature">'+esc(x)+"</div>"}).join("");txt("dailyCta",d.cta);$("feeDays").value=d.defaultDays||3;updateTotal();$("fullCta").onclick=function(){chooseService(f.name||"מסלול הקישורים המלא")};$("dailyCta").onclick=function(){chooseService((d.name||"מסלול טיול לפי ימים")+" · "+$("feeDays").value+" ימים")}}
-function updateTotal(){var n=Math.max(1,Number($("feeDays").value||1)),rate=Number(SITE.pricing?.dailyPlan?.launchPrice||111);txt("daysTotal",money(n*rate))}
-function chooseService(name){$("serviceChoice").value=name;$("serviceChoiceBanner").textContent="המסלול שבחרתם: "+name;$("serviceChoiceBanner").style.display="block";$("request").scrollIntoView({behavior:"smooth",block:"start"})}
-function fieldHTML(f){var req=f.required?" required":"",star=f.required?' <span style="color:#b64040">*</span>':"",inp="";if(f.type==="textarea")inp='<textarea name="'+esc(f.name)+'" placeholder="'+esc(f.placeholder||"")+'"'+req+"></textarea>";else if(f.type==="select")inp='<select name="'+esc(f.name)+'"'+req+">"+(f.options||[]).map(function(o){return "<option>"+esc(o)+"</option>"}).join("")+"</select>";else inp='<input type="'+esc(f.type||"text")+'" name="'+esc(f.name)+'" placeholder="'+esc(f.placeholder||"")+'"'+req+">";return '<div class="field '+esc(f.width||"full")+'"><label>'+esc(f.label)+star+"</label>"+inp+"</div>"}
-function renderForm(){currentStep=0;$("formSteps").innerHTML=(SITE.form?.sections||[]).map(function(s,i){return '<div class="form-step '+(i===0?"active":"")+'" data-step="'+i+'"><h3>'+esc(s.title)+'</h3><p class="desc">'+esc(s.description)+'</p><div class="fields">'+(s.fields||[]).map(fieldHTML).join("")+"</div></div>"}).join("");$("progress").innerHTML=(SITE.form?.sections||[]).map(function(_,i){return '<span class="'+(i===0?"active":"")+'"></span>"}).join("");updateButtons()}
-function validateCurrent(){var step=document.querySelector('.form-step[data-step="'+currentStep+'"]');if(!step)return true;for(var e of step.querySelectorAll("[required]")){if(!e.checkValidity()){e.reportValidity();return false}}return true}
-function showStep(){document.querySelectorAll(".form-step").forEach(function(s,i){s.classList.toggle("active",i===currentStep)});document.querySelectorAll("#progress span").forEach(function(s,i){s.classList.toggle("active",i<=currentStep)});updateButtons()}
-function updateButtons(){var last=(SITE.form?.sections||[]).length-1;$("prevBtn").style.visibility=currentStep===0?"hidden":"visible";$("nextBtn").style.display=currentStep===last?"none":"inline-flex";$("submitBtn").style.display=currentStep===last?"inline-flex":"none";$("agreementWrap").style.display=currentStep===last?"flex":"none"}
-function openDestination(i){var d=SITE.destinationsSection?.destinations?.[i];if(!d)return;$("dmImage").src=d.image||SITE.hero?.backgroundImage||"";txt("dmCountry",d.country);txt("dmName",d.name);txt("dmIntro",d.intro);txt("dmAttractionsTitle",SITE.destinationsSection.attractionsTitle);txt("dmJewishTitle",SITE.destinationsSection.jewishTitle);$("dmAttractions").innerHTML=(d.attractions||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");$("dmJewish").innerHTML=(d.jewish||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");$("dmTour").href=d.tourUrl||"#";txt("dmTour",SITE.destinationsSection.tourismLinkLabel);$("dmJew").href=d.jewishUrl||"#";txt("dmJew",SITE.destinationsSection.jewishLinkLabel);txt("dmRequest",SITE.destinationsSection.requestButton);$("dmRequest").onclick=function(){closeDestination();var f=document.querySelector('[name="יעדים מועדפים"]');if(f)f.value=d.name+" / "+d.country;$("request").scrollIntoView({behavior:"smooth"})};$("destModal").classList.add("show");document.body.style.overflow="hidden"}
+
+function render(){
+  document.title=(SITE.branding&&SITE.branding.siteName?SITE.branding.siteName:"רואים עולם")+" | "+(SITE.branding&&SITE.branding.slogan?SITE.branding.slogan:"חו״ל כשר. לא רק לעשירים.");
+
+  $("notice").innerHTML=(SITE.notice||[]).map(function(x){return "<span>"+esc(x)+"</span>"}).join("");
+  $("menu").innerHTML=(SITE.navigation||[]).filter(function(x){return x.href!=="#request"}).map(function(x){return '<a href="'+esc(x.href)+'">'+esc(x.label)+'</a>'}).join("");
+  $("footerNav").innerHTML=(SITE.navigation||[]).map(function(x){return '<a href="'+esc(x.href)+'">'+esc(x.label)+'</a>'}).join("");
+  var cta=(SITE.navigation||[]).find(function(x){return x.href==="#request"});
+  txt("navCta",cta?cta.label:"בנו לי נופש");
+
+  if(SITE.hero&&SITE.hero.backgroundImage)$("hero").style.backgroundImage='url("'+String(SITE.hero.backgroundImage).replace(/"/g,"%22")+'")';
+  txt("heroEyebrow",SITE.hero&&SITE.hero.eyebrow);
+  txt("heroBefore",SITE.hero&&SITE.hero.titleBefore);
+  txt("heroHighlight",SITE.hero&&SITE.hero.titleHighlight);
+  txt("heroAfter",SITE.hero&&SITE.hero.titleAfter);
+  txt("heroLead",SITE.hero&&SITE.hero.lead);
+  txt("heroStrong",SITE.hero&&SITE.hero.leadStrong);
+  txt("heroPrimary",SITE.hero&&SITE.hero.primaryCta);
+  txt("heroSecondary","שירות ומחירים");
+  $("heroProofs").innerHTML=((SITE.hero&&SITE.hero.proofs)||[]).map(function(x){return "<span>"+esc(x)+"</span>"}).join("");
+
+  var ex=(SITE.hero&&SITE.hero.example)||{};
+  txt("exLabel",ex.label);txt("exTitle",ex.title);txt("exDesc",ex.description);txt("exTotalLabel",ex.totalLabel);txt("exTotal",ex.total);txt("exDuration",ex.duration);txt("exDisclaimer",ex.disclaimer);
+  $("exLines").innerHTML=(ex.lines||[]).map(function(x){return '<div class="cost"><span>'+esc(x.label)+'</span><b>'+esc(x.value)+'</b></div>'}).join("");
+
+  txt("ideaKicker",SITE.idea&&SITE.idea.kicker);txt("ideaTitle",SITE.idea&&SITE.idea.title);txt("ideaDesc",SITE.idea&&SITE.idea.description);
+  renderCompare("regular",(SITE.idea&&SITE.idea.regular)||{});
+  renderCompare("smart",(SITE.idea&&SITE.idea.smart)||{});
+
+  txt("processKicker",SITE.process&&SITE.process.kicker);txt("processTitle",SITE.process&&SITE.process.title);txt("processDesc",SITE.process&&SITE.process.description);
+  $("steps").innerHTML=((SITE.process&&SITE.process.steps)||[]).map(function(s){return '<article class="step reveal"><div class="num">'+esc(s.number)+'</div><h3>'+esc(s.title)+'</h3><p>'+esc(s.text)+'</p></article>'}).join("");
+
+  renderPricing();
+
+  txt("destKicker",SITE.destinationsSection&&SITE.destinationsSection.kicker);txt("destTitle",SITE.destinationsSection&&SITE.destinationsSection.title);txt("destDesc",SITE.destinationsSection&&SITE.destinationsSection.description);txt("destNote",SITE.destinationsSection&&SITE.destinationsSection.note);
+  $("destGrid").innerHTML=((SITE.destinationsSection&&SITE.destinationsSection.destinations)||[]).map(function(d,i){
+    var image=d.image||(SITE.hero&&SITE.hero.backgroundImage)||"";
+    return '<article class="dest-card reveal" data-i="'+i+'"><img src="'+esc(image)+'" alt="'+esc(d.name)+'" loading="lazy"><div class="dest-copy"><span class="dest-country">'+esc(d.country)+'</span><h3>'+esc(d.name)+'</h3><p>'+esc(d.tag)+'</p><span class="dest-open">לסקירה קצרה ←</span></div></article>';
+  }).join("");
+  document.querySelectorAll(".dest-card").forEach(function(card){card.onclick=function(){openDestination(Number(card.dataset.i))}});
+
+  txt("formKicker",SITE.form&&SITE.form.kicker);txt("formTitle",SITE.form&&SITE.form.title);txt("formDesc",SITE.form&&SITE.form.description);txt("sideTitle",SITE.form&&SITE.form.sidebarTitle);txt("sideIntro",SITE.form&&SITE.form.sidebarIntro);txt("security",SITE.form&&SITE.form.securityText);
+  $("sidePoints").innerHTML=((SITE.form&&SITE.form.sidebarPoints)||[]).map(function(x){return '<div class="side-point"><div class="side-ico">'+esc(x.icon)+'</div><div><b>'+esc(x.title)+'</b><span>'+esc(x.text)+'</span></div></div>'}).join("");
+  txt("prevBtn",SITE.form&&SITE.form.previousButton);txt("nextBtn",SITE.form&&SITE.form.nextButton);txt("submitBtn",SITE.form&&SITE.form.submitButton);txt("agreementText",SITE.form&&SITE.form.agreementText);
+  $("formSubject").value=(SITE.form&&SITE.form.subject)||"";
+  $("autoResponse").value=(SITE.form&&SITE.form.autoResponse)||"";
+  $("tripForm").action="https://formsubmit.co/"+SITE.settings.contactEmail;
+  renderForm();
+
+  txt("faqKicker",SITE.faq&&SITE.faq.kicker);txt("faqTitle",SITE.faq&&SITE.faq.title);
+  $("faqItems").innerHTML=((SITE.faq&&SITE.faq.items)||[]).map(function(x){return '<details><summary>'+esc(x.question)+'</summary><p>'+esc(x.answer)+'</p></details>'}).join("");
+
+  txt("footerDesc",SITE.footer&&SITE.footer.description);
+  txt("copyright",((SITE.footer&&SITE.footer.copyright)||"").replace("{year}",new Date().getFullYear()));
+  txt("footerDisclaimer",SITE.footer&&SITE.footer.disclaimer);
+
+  document.querySelectorAll("#menu a").forEach(function(a){a.onclick=function(){$("menu").classList.remove("show")}});
+  setupReveal();
+  applyVisualMode();
+}
+
+function renderCompare(prefix,d){
+  txt(prefix+"Title",d.title);txt(prefix+"Desc",d.description);txt(prefix+"Budget",d.budget);txt(prefix+"Label",d.budgetLabel);
+  $(prefix+"Points").innerHTML=(d.points||[]).map(function(x){return '<div class="check"><i>✓</i><div><b>'+esc(x.title)+'</b><span>'+esc(x.text)+'</span></div></div>'}).join("");
+}
+
+function renderPricing(){
+  var pr=SITE.pricing||{},f=pr.fullPlan||{},d=pr.dailyPlan||{};
+  txt("pricingKicker",pr.kicker);txt("pricingTitle",pr.title);txt("pricingDesc",pr.description);txt("pricingNote",pr.note);
+  txt("fullBadge","מחיר השקה · "+(f.badge||""));txt("fullName",f.name);txt("fullDesc",f.description);txt("fullOld","מחיר רגיל "+money(f.regularPrice));txt("fullPrice",money(f.launchPrice));txt("fullUnit",f.unit);
+  $("fullFeatures").innerHTML=(f.features||[]).map(function(x){return '<div class="feature">'+esc(x)+'</div>'}).join("");
+  txt("fullCta",f.cta);
+
+  txt("dailyBadge","מחיר השקה · "+(d.badge||""));txt("dailyName",d.name);txt("dailyDesc",d.description);txt("dailyOld","מחיר רגיל "+money(d.regularPrice)+" ליום");txt("dailyPrice",money(d.launchPrice));txt("dailyUnit",d.unit);
+  $("dailyFeatures").innerHTML=(d.features||[]).map(function(x){return '<div class="feature">'+esc(x)+'</div>'}).join("");
+  txt("dailyCta",d.cta);
+  $("feeDays").value=d.defaultDays||3;
+  updateTotal();
+
+  $("fullCta").onclick=function(){chooseService(f.name||"מסלול הקישורים המלא")};
+  $("dailyCta").onclick=function(){chooseService((d.name||"מסלול טיול לפי ימים")+" · "+$("feeDays").value+" ימים")};
+}
+
+function updateTotal(){
+  var n=Math.max(1,Number($("feeDays").value||1));
+  var rate=Number((SITE.pricing&&SITE.pricing.dailyPlan&&SITE.pricing.dailyPlan.launchPrice)||111);
+  txt("daysTotal",money(n*rate));
+}
+function chooseService(name){
+  $("serviceChoice").value=name;
+  $("serviceChoiceBanner").textContent="המסלול שבחרתם: "+name;
+  $("serviceChoiceBanner").style.display="block";
+  $("request").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function fieldHTML(f){
+  var req=f.required?" required":"";
+  var star=f.required?' <span style="color:#b64040">*</span>':"";
+  var name=esc(f.name||"");
+  var placeholder=esc(f.placeholder||"");
+  var input="";
+  if(f.type==="textarea"){
+    input='<textarea name="'+name+'" placeholder="'+placeholder+'"'+req+'></textarea>';
+  }else if(f.type==="select"){
+    var opts=(f.options||[]).map(function(o){return '<option value="'+esc(o)+'">'+esc(o)+'</option>'}).join("");
+    input='<select name="'+name+'"'+req+'><option value="">בחרו...</option>'+opts+'</select>';
+  }else{
+    input='<input type="'+esc(f.type||"text")+'" name="'+name+'" placeholder="'+placeholder+'"'+req+'>';
+  }
+  return '<div class="field '+esc(f.width||"full")+'"><label>'+esc(f.label)+star+'</label>'+input+'</div>';
+}
+
+function renderForm(){
+  currentStep=0;
+  var sections=(SITE.form&&SITE.form.sections)||[];
+  $("formSteps").innerHTML=sections.map(function(s,i){return '<div class="form-step '+(i===0?"active":"")+'" data-step="'+i+'"><h3>'+esc(s.title)+'</h3><p class="desc">'+esc(s.description)+'</p><div class="fields">'+(s.fields||[]).map(fieldHTML).join("")+'</div></div>'}).join("");
+  $("progress").innerHTML=sections.map(function(_,i){return '<span class="'+(i===0?"active":"")+'"></span>'}).join("");
+  updateButtons();
+}
+function validateCurrent(){
+  var step=document.querySelector('.form-step[data-step="'+currentStep+'"]');
+  if(!step)return true;
+  var required=step.querySelectorAll("[required]");
+  for(var i=0;i<required.length;i++){if(!required[i].checkValidity()){required[i].reportValidity();return false}}
+  return true;
+}
+function showStep(){
+  document.querySelectorAll(".form-step").forEach(function(s,i){s.classList.toggle("active",i===currentStep)});
+  document.querySelectorAll("#progress span").forEach(function(s,i){s.classList.toggle("active",i<=currentStep)});
+  updateButtons();
+}
+function updateButtons(){
+  var last=((SITE.form&&SITE.form.sections)||[]).length-1;
+  $("prevBtn").style.visibility=currentStep===0?"hidden":"visible";
+  $("nextBtn").style.display=currentStep===last?"none":"inline-flex";
+  $("submitBtn").style.display=currentStep===last?"inline-flex":"none";
+  $("agreementWrap").style.display=currentStep===last?"flex":"none";
+}
+
+function openDestination(i){
+  var list=(SITE.destinationsSection&&SITE.destinationsSection.destinations)||[];
+  var d=list[i];if(!d)return;
+  $("dmImage").src=d.image||(SITE.hero&&SITE.hero.backgroundImage)||"";
+  txt("dmCountry",d.country);txt("dmName",d.name);txt("dmIntro",d.intro);
+  txt("dmAttractionsTitle",SITE.destinationsSection.attractionsTitle);txt("dmJewishTitle",SITE.destinationsSection.jewishTitle);
+  $("dmAttractions").innerHTML=(d.attractions||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");
+  $("dmJewish").innerHTML=(d.jewish||[]).map(function(x){return "<li>"+esc(x)+"</li>"}).join("");
+  $("dmTour").href=d.tourUrl||"#";txt("dmTour",SITE.destinationsSection.tourismLinkLabel);
+  $("dmJew").href=d.jewishUrl||"#";txt("dmJew",SITE.destinationsSection.jewishLinkLabel);
+  txt("dmRequest",SITE.destinationsSection.requestButton);
+  $("dmRequest").onclick=function(){closeDestination();var f=document.querySelector('[name="יעדים מועדפים"]');if(f)f.value=d.name+" / "+d.country;$("request").scrollIntoView({behavior:"smooth"})};
+  $("destModal").classList.add("show");document.body.style.overflow="hidden";
+}
 function closeDestination(){$("destModal").classList.remove("show");document.body.style.overflow=""}
-function setupReveal(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll(".reveal").forEach(function(e){io.observe(e)})}
-function applyVisualMode(){if(new URLSearchParams(location.search).get("visual")!=="1"||window.parent===window)return;document.body.classList.add("kf-visual");var map={heroEyebrow:"hero.eyebrow",heroBefore:"hero.titleBefore",heroHighlight:"hero.titleHighlight",heroAfter:"hero.titleAfter",heroLead:"hero.lead",heroStrong:"hero.leadStrong",ideaTitle:"idea.title",processTitle:"process.title",pricingTitle:"pricing.title",destTitle:"destinationsSection.title",formTitle:"form.title",faqTitle:"faq.title",footerDesc:"footer.description"};Object.keys(map).forEach(function(id){if($(id))$(id).dataset.kfPath=map[id]});window.parent.postMessage({type:"kf-rendered"},location.origin)}
-window.KF_setSite=function(v){SITE=JSON.parse(JSON.stringify(v));render()};window.KF_getSite=function(){return JSON.parse(JSON.stringify(SITE))};
-$("toggle").onclick=function(){$("menu").classList.toggle("show")};$("minus").onclick=function(){$("feeDays").value=Math.max(1,Number($("feeDays").value||1)-1);updateTotal()};$("plus").onclick=function(){$("feeDays").value=Math.min(30,Number($("feeDays").value||1)+1);updateTotal()};$("feeDays").oninput=updateTotal;$("prevBtn").onclick=function(){currentStep=Math.max(0,currentStep-1);showStep()};$("nextBtn").onclick=function(){if(!validateCurrent())return;currentStep++;showStep()};$("destClose").onclick=closeDestination;$("destModal").onclick=function(e){if(e.target===$("destModal"))closeDestination()};document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDestination()});loadSite();
+
+function setupReveal(){
+  if(!("IntersectionObserver" in window)){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("in")});return}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll(".reveal").forEach(function(e){io.observe(e)});
+}
+function applyVisualMode(){
+  if(new URLSearchParams(location.search).get("visual")!=="1"||window.parent===window)return;
+  document.body.classList.add("kf-visual");
+  var map={heroEyebrow:"hero.eyebrow",heroBefore:"hero.titleBefore",heroHighlight:"hero.titleHighlight",heroAfter:"hero.titleAfter",heroLead:"hero.lead",heroStrong:"hero.leadStrong",ideaTitle:"idea.title",processTitle:"process.title",pricingTitle:"pricing.title",destTitle:"destinationsSection.title",formTitle:"form.title",faqTitle:"faq.title",footerDesc:"footer.description"};
+  Object.keys(map).forEach(function(id){if($(id))$(id).dataset.kfPath=map[id]});
+  window.parent.postMessage({type:"kf-rendered"},location.origin);
+}
+window.KF_setSite=function(v){SITE=JSON.parse(JSON.stringify(v));render()};
+window.KF_getSite=function(){return JSON.parse(JSON.stringify(SITE))};
+
+$("toggle").onclick=function(){$("menu").classList.toggle("show")};
+$("minus").onclick=function(){$("feeDays").value=Math.max(1,Number($("feeDays").value||1)-1);updateTotal()};
+$("plus").onclick=function(){$("feeDays").value=Math.min(30,Number($("feeDays").value||1)+1);updateTotal()};
+$("feeDays").oninput=updateTotal;
+$("prevBtn").onclick=function(){currentStep=Math.max(0,currentStep-1);showStep()};
+$("nextBtn").onclick=function(){if(!validateCurrent())return;currentStep++;showStep()};
+$("destClose").onclick=closeDestination;
+$("destModal").onclick=function(e){if(e.target===$("destModal"))closeDestination()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDestination()});
+loadSite();
 </script>
 </body></html>
